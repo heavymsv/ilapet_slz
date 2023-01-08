@@ -1,0 +1,79 @@
+<div class="tela-cadastro">
+    <app-header class="header"></app-header>
+    <h1 class="titulo-cadastro">{{"Dados do " + ((this.authService.validateRole(['ROLE_ADMIN']))?"Admin":"Cliente")}}</h1>
+
+    
+    <form class="form" [formGroup]="form" (ngSubmit)="submit()">
+
+        <div class="select-form-format">
+            <div class="select-outline">
+                <div class="icon-spacing">
+                    <span class="material-symbols-outlined">person</span>
+                </div>
+                <mat-form-field class="Sintomas">
+                    <mat-label>Nome</mat-label>
+                    <input matInput [(ngModel)]="name" type="text" placeholder="Nome Completo" name="nome" formControlName="nome" class="campo-cadastro" readonly="true">
+                </mat-form-field>
+                <!--<input type="text" [(ngModel)]="sintomas" id="" class="sintomas-field">-->
+    
+            </div>
+        </div>
+        <div style="height: 3vh;">
+            <p *ngIf="form.controls['nome'].errors?.['required']">É necessário informar um Nome!</p>
+        </div>
+
+        <div class="select-form-format">
+            <div class="select-outline">
+                <div class="icon-spacing">
+                    <span class="material-symbols-outlined">mail</span>
+                </div>
+                <mat-form-field class="Sintomas">
+                    <mat-label>E-mail</mat-label>
+                    <input matInput [(ngModel)]="mail" type="text" placeholder="E-mail" name="email" formControlName="email" class="campo-login">
+                </mat-form-field>
+                <!--<input type="text" [(ngModel)]="sintomas" id="" class="sintomas-field">-->
+
+            </div>
+        </div>
+
+        <div style="height: 3vh;">
+            <p *ngIf="form.controls['email'].errors?.['required']">É necessário informar um Número de Celular!</p>
+        </div>
+
+        <div class="select-form-format">
+            <div class="select-outline">
+                <div class="icon-spacing">
+                    <span class="material-symbols-outlined">phone</span>
+                </div>
+                <mat-form-field class="Sintomas">
+                    <mat-label>Telefone</mat-label>
+                    <input matInput [(ngModel)]="tel" type="text" placeholder="Telefone  com DDD" name="telefone" formControlName="telefone" class="campo-login" mask="(00) 00000-0000" readonly="true">
+                </mat-form-field>
+                <!--<input type="text" [(ngModel)]="sintomas" id="" class="sintomas-field">-->
+
+            </div>
+        </div>
+
+        <div style="height: 3vh;">
+            <p *ngIf="form.controls['telefone'].errors?.['required']">É necessário informar um Telefone!</p>
+        </div>
+        
+
+        <div style="display: none;width: 100%;justify-content: center;">
+            <button [disabled]="form.invalid" id="loginButton" class="button-agendar"  [ngStyle]="{ backgroundColor: form.invalid ? 'whitesmoke' : 'var(--primary-pet-color)', color: form.invalid ? '' : 'whitesmoke'}">
+    
+                <mat-spinner [ngStyle]="{ display: isLoading ? 'flex' : 'none', justifyContent: isLoading ? 'center' : 'none'}"
+                    [diameter]="30" style="margin-right: 5%;width: 95%;">
+                
+                </mat-spinner>
+                <p class="text-aligner" [ngStyle]="{ display: isLoading ? 'none'  : 'flex',justifyContent: isLoading ? 'none'  : 'center'}">Cadastrar</p>
+            </button>
+
+        </div>
+        
+    
+    </form>
+    <app-footer-client [num]="4"></app-footer-client>
+</div>
+
+

@@ -1,0 +1,46 @@
+<div style="display: flex;align-items: center;justify-content: center;">
+    <div class="tela-cadastro">
+        <div class="select-form-format">
+            <div class="select-outline">
+                <div class="icon-spacing">
+                    <mat-icon>
+                        format_list_bulleted
+                    </mat-icon>
+                </div>
+                <mat-form-field appearance="fill" class="select-pet-form">
+                    <mat-label>Tipo</mat-label>
+                    <mat-select [(value)]="selected" class="select-pet-form">
+                        <mat-option>None</mat-option>
+                        <mat-option value="1">Consulta</mat-option>
+                        <mat-option value="2">Exame</mat-option>
+                        <mat-option value="3">Vacina</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="select-form-format">
+            <div class="select-outline">
+                <div class="icon-spacing">
+                    <mat-icon>
+                        person_outline
+                    </mat-icon>
+                </div>
+                <mat-form-field appearance="fill" class="select-pet-form">
+                    <mat-label>Cliente</mat-label>
+                    <mat-select (selectionChange)="pessoaDiferente()" [(value)]="userId" class="select-pet-form">
+                        <mat-option>None</mat-option>
+                        <mat-option *ngFor="let user of users" [value]="user.id">{{user.name}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </div>
+
+        <app-create-consulta *ngIf="(selected=='1')&&loaded&&loaded2" [pets]="pets"
+            [veterinarios]="vets"></app-create-consulta>
+        <app-create-exame *ngIf="(selected=='2')&&loaded&&loaded2" [pets]="pets"
+            [veterinarios]="vets"></app-create-exame>
+        <app-create-vacina *ngIf="(selected=='3')&&loaded&&loaded2" [pets]="pets"
+            [veterinarios]="vets"></app-create-vacina>
+
+    </div>
+</div>

@@ -1,0 +1,14 @@
+<div class="footer-style">
+    <a (click)="router.navigate(['home'])" class="icon-adjust">
+        <mat-icon [ngStyle]="{color:(num==1)?'var(--secondary-pet-color)':'whitesmoke'}">
+            home
+        </mat-icon>
+        <p class="text-label-icon" [ngStyle]="{color:(num==1)?'var(--secondary-pet-color)':'whitesmoke'}">Inicio</p>
+    </a>
+    <a (click)="router.navigate(['login'])"  class="icon-adjust">
+        <mat-icon [ngStyle]="{color:(num==2)?'var(--secondary-pet-color)':'whitesmoke'}">
+            person_outline
+        </mat-icon>
+        <p class="text-label-icon" [ngStyle]="{color:(num==2)?'var(--secondary-pet-color)':'whitesmoke'}">Conta</p>
+    </a>
+</div>

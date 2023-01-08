@@ -1,0 +1,160 @@
+.home-info{
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    
+}
+
+.geral-carousel{
+    height:30vh;
+    width:100%;
+    display: flex;
+    align-items: center;
+    background-color: var(--primary-pet-color);
+}
+
+.img-carousel{
+    width: 100%;
+    margin: auto;
+    
+}
+
+.caption{
+    width: 100%;
+    background-color: var(--primary-pet-color);
+    text-align: center;
+    color: white;
+}
+
+.ajeitar-btn{
+    align-self: flex-end;
+    margin-right: 5px;
+    padding-top: 10px;
+    display: flex;
+    justify-content: flex-end;
+    text-decoration: none;
+}
+
+.img-size{
+    width: 100vw;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.formato-img-carousel{
+    height: 22vh;
+}
+
+.caption-img-carousel{
+    background-color: var(--primary-pet-color);
+    height: 5vh;
+    width: 100vw;
+    display: flex;
+    justify-content: space-between;
+    padding-right: 10px;
+    align-items: center;
+}
+
+.text-caption-img-carousel{
+    color: white;
+    overflow: hidden;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 5px;
+}
+
+.centralizar-seta{
+    margin-top: auto;
+    margin-bottom: auto;
+    height: fit-content;
+}
+
+.icon-carousel-item{
+    padding-top: 5px;
+    color: white;
+    
+}
+
+.logo-paw{
+    height:25vh;
+}
+
+.quem-somos-title{
+    text-transform: uppercase;
+    margin-bottom: 3vh;
+    font-weight: 700;
+    font-size: x-large;
+    color: #212248;
+    width: fit-content;
+}
+
+.quem-somos-subtitle{
+    font-weight: 400;
+    font-size: large;
+    color: #212248;
+    margin-bottom: 3vh;
+}
+
+.quem-somos-text{
+    font-size: medium;
+    box-sizing: border-box;
+    margin-left: 10px;
+    margin-right: 10px;
+    justify-self: center;
+    align-self: center;
+    text-align: center;
+}
+
+.sociais{
+    display:flex;
+    justify-content: center;
+    padding-bottom: 20px;
+    padding-top: 20px;
+}
+
+.sociais-icons{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.discreet-button{
+    border-radius: 10px;
+    background-color: var(--primary-pet-color);
+    color: white;
+    padding: 0px 15px;
+    border-color: var(--primary-pet-color);
+}
+
+.seta-voltar {
+    color: var(--primary-pet-color);
+    font-size: 40px;
+    width: 50px;
+    height: 50px;
+    
+}
+
+.caption{
+    text-align: left;
+    padding-left: 10px;
+    display: flex;
+    text-decoration: none;
+}
+
+.caption:hover{
+    cursor: pointer;
+}
+
+.caption p{
+    padding: 5px 0px;
+    margin: auto 0px;
+}
+
+.arrow-link{
+    align-self: center;
+    justify-self: flex-end;
+    margin-left: auto;
+    margin-right: 10px;
+}

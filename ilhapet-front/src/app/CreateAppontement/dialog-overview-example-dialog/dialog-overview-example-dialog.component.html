@@ -1,0 +1,22 @@
+
+    <h1 mat-dialog-title>Marcações</h1>
+
+
+    <div mat-dialog-content>
+        <div (touchstart)="posIni = $event.changedTouches[0].pageX" (touchend)="move($event.changedTouches[0].pageX)">
+            <ngb-carousel #carousel [showNavigationArrows]="false" [draggable]="true" [interval]="0">
+                <ng-template ngbSlide *ngFor="let comp of compromissos">
+
+                    <div class="picsum-img-wrapper compro">
+                        <div style=" width:95%; height:fit-content">
+                            <div class="paragrafos" *ngFor="let paragrafo of extrairParagrafos(comp)">
+                                <p class="interno"><strong>{{paragrafo.titulo}}</strong>{{paragrafo.dados}}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </ng-template>
+            </ngb-carousel>
+        </div>
+
+    </div>

@@ -1,0 +1,70 @@
+<app-header class="header"></app-header>
+<div class="tela-pubs">
+    
+
+    <div class="home-info">
+
+        <div class="artigos-todos">
+            <div class="voltar-linha">
+                <a (click)="router.navigate(['home'])" class="arrow-case">
+                    <mat-icon class="seta-voltar">
+                        arrow_back
+                    </mat-icon>
+                </a>
+                <a *ngIf="verificaNivel()" (click)="router.navigate(['nova-pub'])" class="nova-pub-add">
+                    <mat-icon class="seta-voltar">
+                        add_circle
+                    </mat-icon>
+                </a>
+            </div>
+        </div>
+        <div *ngIf="loaded else loading" class="artigos-de-fato">
+            <div *ngFor="let pub of pubs">
+                <div style="display: flex;margin-bottom: 20px;">
+                    <a (click)="router.navigate(['pub',pub.id])" class="link-pub">
+                        <img [src]='"assets/uped_imgs/"+pub.imagem' class="imagem-pub">
+                        <div class="conteudo-pubs">
+                            <p class="data-pub">{{converteData(pub.dataPub.toString())}}</p>
+                            <p class="titulo-blog">{{(pub.titulo.length>20)?(pub.titulo.substr(0,
+                                15)+"..."):pub.titulo}}
+                            </p>
+                            <p class="corpo-blog">{{pub.texto.substr(0, 40)+"..."}}</p>
+                        </div>
+                    </a>
+                    <button *ngIf="verificaNivel()" mat-icon-button [matMenuTriggerFor]="menu" class="especial-btn">
+                        <mat-icon>more_vert</mat-icon>
+                    </button>
+
+                </div>
+
+
+                <mat-menu #menu="matMenu">
+                    <div mat-menu-item>
+                        <app-card-pub [id]="pub.id"></app-card-pub>
+                    </div>
+                </mat-menu>
+            </div>
+
+        </div>
+
+
+        <mat-paginator #paginator class="demo-paginator" (page)="handlePageEvent($event)" [length]="length"
+            [pageSize]="pageSize" [disabled]="disabled" [showFirstLastButtons]="showFirstLastButtons"
+            [pageSizeOptions]="showPageSizeOptions ? pageSizeOptions : []" [hidePageSize]="hidePageSize"
+            [pageIndex]="pageIndex" aria-label="Select page">
+        </mat-paginator>
+
+    </div>
+
+
+    <app-footer-general [num]="1" *ngIf="verifica()"></app-footer-general>
+    <app-footer-client [num]="1" *ngIf="!verifica()"></app-footer-client>
+
+
+
+
+</div>
+
+<ng-template #loading>
+    <div>Loading...</div>
+</ng-template>

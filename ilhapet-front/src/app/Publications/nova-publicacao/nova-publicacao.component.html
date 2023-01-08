@@ -1,0 +1,61 @@
+<app-header></app-header>
+<div style="display: flex;align-items: center;justify-content: center;">
+    
+    <div class="tela-alerta">
+        <h1>Nova Postagem</h1>
+        <h2 class="title-alerta">Insira uma Imagem</h2>
+        <div class="files-to-upload">
+            <input type="file" class="file-input" (change)="onFileSelected($event)" #fileUpload>
+    
+            
+    
+                <p class="text-upload">{{fileName || "Nenhuma imagem selecionada."}}</p>
+    
+                <button mat-mini-fab color="primary" class="upload-btn" (click)="fileUpload.click()">
+                    <mat-icon>image</mat-icon>
+                </button>
+    
+        </div>
+    
+        <h2 class="title-alerta">Insira um Título</h2>
+        <div class="select-form-format">
+            <div class="select-outline">
+                <mat-form-field class="Sintomas">
+                    <mat-label>Titulo</mat-label>
+                    <input matInput type="text" accept="image/png" [(ngModel)]="titulo" id="" placeholder="Titulo publicação"
+                        class="campo-alerta">
+                </mat-form-field>
+                <!--<input type="text" [(ngModel)]="sintomas" id="" class="sintomas-field">-->
+    
+            </div>
+        </div>
+        <h2 class="title-alerta">Insira uma descrição</h2>
+        <div class="select-form-format">
+            <div class="select-outline">
+                <mat-form-field class="Sintomas">
+                    <mat-label>Descrição</mat-label>
+                    <textarea matInput type="text" [(ngModel)]="descricao"
+                        placeholder="Escreva aqui o conteudo a ser publicado" id="" class="campo-alerta"></textarea>
+                </mat-form-field>
+                <!--<input type="text" [(ngModel)]="sintomas" id="" class="sintomas-field">-->
+    
+            </div>
+        </div>
+
+        <div style="display: flex;width: 100%;justify-content: center;">
+            <button [disabled]="fileName==''||descricao==''||titulo==''" id="loginButton" class="button-agendar"  [ngStyle]="{ backgroundColor: (fileName==''||descricao==''||titulo=='') ? 'whitesmoke' : 'var(--primary-pet-color)', color: (fileName==''||descricao==''||titulo=='')? '' : 'whitesmoke'}" (click)="onSubmit()">
+    
+                <mat-spinner [ngStyle]="{ display: isLoading ? 'flex' : 'none', justifyContent: isLoading ? 'center' : 'none'}"
+                    [diameter]="30" style="margin-right: 5%;width: 95%;">
+                
+                </mat-spinner>
+                <p class="text-aligner" [ngStyle]="{ display: isLoading ? 'none'  : 'flex',justifyContent: isLoading ? 'none'  : 'center'}">Publicar</p>
+            </button>
+
+        </div>
+    </div>
+
+    <app-footer-general [num]="1" *ngIf="verifica()"></app-footer-general>
+    <app-footer-client [num]="1" *ngIf="!verifica()"></app-footer-client>
+    
+</div>

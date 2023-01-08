@@ -1,0 +1,27 @@
+<div class="tela-alerta">
+    <h2 class="title-alerta">Insira um Título</h2>
+    <div class="select-form-format">
+        <div class="select-outline">
+            <mat-form-field class="Sintomas">
+                <mat-label>Titulo</mat-label>
+                <input matInput type="text" [(ngModel)]="titulo"  id="" placeholder="Titulo publicação"  class="campo-alerta">
+            </mat-form-field>
+            <!--<input type="text" [(ngModel)]="sintomas" id="" class="sintomas-field">-->
+    
+        </div>
+    </div>
+    <h2 class="title-alerta">Insira uma descrição</h2>
+    <div class="select-form-format">
+        <div class="select-outline">
+            <mat-form-field class="Sintomas">
+                <mat-label>Descricao</mat-label>
+                <textarea matInput type="email" [(ngModel)]="descricao" placeholder="Escreva aqui o conteudo a ser publicado" id="" class="campo-alerta"></textarea>
+            </mat-form-field>
+            <!--<input type="text" [(ngModel)]="sintomas" id="" class="sintomas-field">-->
+    
+        </div>
+    </div>
+
+    <button class="button-agendar">Gerar Publicação</button>
+</div>
+

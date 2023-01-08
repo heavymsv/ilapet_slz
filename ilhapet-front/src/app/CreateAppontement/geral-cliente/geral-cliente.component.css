@@ -1,0 +1,18 @@
+.demo-inline-calendar-card {
+    width: 80%;
+    margin: 20px auto;
+}
+
+.highlight-dates{
+    background-color: var(--secondary-pet-color);
+    border-radius: 100%;
+}
+.deityis{
+    background-color: red;
+    border-radius: 100%;
+}
+button.example-custom-date-class {
+    background: orange;
+    border-radius: 100%;
+    
+}

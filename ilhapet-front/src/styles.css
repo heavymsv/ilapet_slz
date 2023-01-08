@@ -1,0 +1,123 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import "ngx-toastr/toastr";
+
+:root{
+    --primary-pet-color: #212248;
+    --secondary-pet-color: #ffd933;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;  background-image: url("../../ilhapet-front/src/assets/imgs/Background.svg");}
+
+.mat-mdc-form-field-subscript-wrapper{
+    height: 0px;
+}
+
+.mat-mdc-form-field{
+    width: 100%;
+}
+
+.highlight-dates{
+    background-color: var(--secondary-pet-color);
+    border-radius: 100%;
+}
+
+.header{
+    width: 100vw;
+}
+
+.footer-style{
+    background-color: var(--primary-pet-color);
+    width:100vw;
+    height:12vh;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.icon-adjust{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+}
+
+.text-label-icon{
+    text-decoration: none;
+}
+
+.style-header{
+    background-color: var(--primary-pet-color);
+    height:12vh;
+    min-height:60px;
+    width:100%;
+    display:flex;
+    align-items: center;
+    justify-content:center
+}
+
+.style-header img{
+    width: auto!important;
+    height: 10vh;
+    align-self: center;
+}
+
+.select-form-format{
+    max-width: 700px!important;
+
+}
+
+.seta-voltar{
+    cursor: pointer;
+}
+
+@media only screen and (min-width: 768px){
+    body{
+        margin-left: 10vw;
+        width: 90vw;
+    }
+    .style-header{
+        background-color: var(--primary-pet-color);
+        height:12vh;
+        min-height:60px;
+        width:10vw;
+        display:flex;
+        align-items: center;
+        justify-content:center;
+        position: fixed;
+        top: 0;
+        left: 0;
+    }
+
+    .style-header img{
+        width: auto!important;
+        height: 5vh;
+    }
+
+    .footer-style{
+        background-color: var(--primary-pet-color);
+        width:10vw;
+        height:88vh;
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+
+    .icon-adjust mat-icon{
+        font-size: 5vh;
+        width: 5vh;
+        height: 5vh;
+    }
+
+}
+
+

@@ -1,0 +1,95 @@
+<app-header class="header"></app-header>
+<div style="display: flex;align-items: center;justify-content: center;">
+    
+    <div class="home-info">
+        <ngb-carousel #carousel [showNavigationArrows]="false" [draggable]="true" (slide)="countSlide($event)"
+            [interval]="0" *ngIf="imgs.length>0">
+            <ng-template ngbSlide [id]="''+imgs.indexOf(img)" *ngFor="let img of imgs">
+                <div class="picsum-img-wrapper" class="geral-carousel">
+                    <img [src]="img" class="img-carousel" />
+                </div>
+
+            </ng-template>
+
+
+
+            <!--<Carousel.Item>
+                <div class="img-size">
+                    <img class="formato-img-carousel" src="../imagens/noticia.jpg"></img>
+                    <div class="caption-img-carousel">
+                        <p class="text-caption-img-carousel">Lorem ipsum dolor sit amet.</p>
+                        <a>
+                            <div class="centralizar-seta"><span
+                                    class="material-icons icon-carousel-item">&#xe5c8;</span></div>
+                        </a>
+                    </div>
+                </div>
+            </Carousel.Item>
+            <Carousel.Item>
+                <div class="img-size">
+                    <img class="formato-img-carousel" src="../imagens/noticia2.jpg"></img>
+                    <div class="caption-img-carousel">
+                        <p class="text-caption-img-carousel">Lorem ipsum dolor sit amet.</p>
+                        <a>
+                            <div class="centralizar-seta"><span
+                                    class="material-icons icon-carousel-item">&#xe5c8;</span></div>
+                        </a>
+                    </div>
+                </div>
+            </Carousel.Item>
+            <Carousel.Item>
+                <div class="img-size">
+                    <img class="formato-img-carousel" src="../imagens/noticia3.webp"></img>
+                    <div class="caption-img-carousel">
+                        <p class="text-caption-img-carousel">Lorem ipsum dolor sit amet.</p>
+                        <a>
+                            <div class="centralizar-seta"><span
+                                    class="material-icons icon-carousel-item">&#xe5c8;</span></div>
+                        </a>
+                    </div>
+                </div>
+            </Carousel.Item>-->
+
+        </ngb-carousel>
+
+
+        <a class="caption" (click)="router.navigate(['pub',post[slide].id])" *ngIf="imgs.length>0">
+            <p [innerHTML]="post[slide].titulo"></p>
+            <mat-icon class="arrow-link">arrow_forward</mat-icon>
+        </a>
+
+
+
+
+        <div class="ajeitar-btn" *ngIf="imgs.length>0">
+            <button (click)="router.navigate(['pubs'])" class="discreet-button">Ver Tudo</button>
+        </div>
+
+        <a *ngIf="verificaNivel()&&(imgs.length==0)" (click)="router.navigate(['nova-pub'])" class="ajeitar-btn">
+            <mat-icon class="seta-voltar">
+                add_circle
+            </mat-icon>
+        </a>
+
+        <img class="logo-paw" src="assets/imgs/Paw.png" />
+        <h2 class="quem-somos-title">Quem Somos</h2>
+        <h5 class="quem-somos-subtitle">Nós iremos tomar conta do seu animal</h5>
+        <p class="quem-somos-text">Aqui o seu bichinho tem o tratamento que ele precisa. Cuidamos da higiene e bem estar
+            do seu pet. Com banho, tosa, hidratação, escovação de dentes e muito mais... Com entrega em domicílio.
+            Aquele
+            atendimento que você e seu bichinho merecem.</p>
+        <div class="sociais">
+            <a href="https://www.instagram.com/ilhapetoficial/?hl=en"><img width="30px" class="sociais-icons"
+                    src="assets/imgs/igdark.svg" /></a>
+            <a
+                href="https://l.instagram.com/?u=https%3A%2F%2Fapi.whatsapp.com%2Fsend%2F%3Fphone%3D5598984008159%26app_absent%3D0&e=ATNErcawgSNj-ur0pRbUculhvorV-QmpOFqNhHDJoNy2iGU-h0RDofNm0kZQgKdKSeIkuvu6BpuITUrV&s=1"><img
+                    width="30px" class="sociais-icons" src="assets/imgs/wpdark.svg" /></a>
+        </div>
+
+    </div>
+
+    <app-footer-general [num]="1" *ngIf="verifica()"></app-footer-general>
+    <app-footer-client [num]="1" *ngIf="!verifica()"></app-footer-client>
+
+
+</div>

@@ -1,0 +1,42 @@
+.button-card{
+    width: fit-content;
+    background-color: var(--primary-pet-color);
+    color: whitesmoke;
+    font-weight: bolder;
+    border-radius: 7px;
+    border-color: var(--primary-pet-color);
+    box-shadow: none;
+    opacity: 70%;
+    margin-top: 20px;
+}
+
+.example-radio-group {
+    display: flex;
+    flex-direction: column;
+    margin: 15px 0;
+    align-items: flex-start;
+  }
+  
+  .example-radio-button {
+    margin: 5px;
+  }
+
+  .demo-paginator{
+    margin-bottom: 12vh;
+    width: 100vw;
+    max-width: 700px;
+  }
+
+  .title-card-avancado{
+    width: 100vw;
+    max-width: 700px;
+  }
+
+  .select-consulta{
+    width: 80%;
+    max-width: 700px;
+  }
+
+  
+
+  

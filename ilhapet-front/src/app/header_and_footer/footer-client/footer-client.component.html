@@ -1,0 +1,33 @@
+<div class="footer-style">
+    <a (click)="router.navigate(['home'])" class="icon-adjust">
+        <mat-icon [ngStyle]="{color:(num==1)?'var(--secondary-pet-color)':'whitesmoke'}">
+            home
+        </mat-icon>
+        <!--<p class="text-label-icon" [ngStyle]="{color:(num==1)?'var(-secondary-pet-color)':'whitesmoke'}">Inicio</p>-->
+    </a>
+    <a (click)="navigateByAuth()" class="icon-adjust">
+        <mat-icon [ngStyle]="{color:(num==2)?'var(--secondary-pet-color)':'whitesmoke'}">
+            calendar_today
+        </mat-icon>
+        <!--<p class="text-label-icon" [ngStyle]="{color:(num==1)?'var(-secondary-pet-color)':'whitesmoke'}">Agendamentos</p>-->
+    </a>
+    <a (click)="medley()" class="icon-adjust">
+        <mat-icon [ngStyle]="{color:(num==3)?'var(--secondary-pet-color)':'whitesmoke'}">
+            notifications
+        </mat-icon>
+        <!--<p class="text-label-icon" [ngStyle]="{color:(num==1)?'var(-secondary-pet-color)':'whitesmoke'}">Notificações</p>-->
+    </a>
+    <a (click)="router.navigate(['dados'])"  class="icon-adjust">
+        <mat-icon [ngStyle]="{color:(num==4)?'var(--secondary-pet-color)':'whitesmoke'}">
+            person_outline
+        </mat-icon>
+        <!--<p class="text-label-icon" [ngStyle]="{color:(num==2)?'var(--secondary-pet-color)':'whitesmoke'}">Conta</p>-->
+    </a>
+    <a (click)="openDialog()"  class="icon-adjust">
+        <mat-icon [ngStyle]="{color:(num==5)?'var(--secondary-pet-color)':'whitesmoke'}">
+            logout
+        </mat-icon>
+        <!--<p class="text-label-icon" [ngStyle]="{color:(num==2)?'var(--secondary-pet-color)':'whitesmoke'}">Sair</p>-->
+    </a>
+</div>
+

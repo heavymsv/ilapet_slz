@@ -1,0 +1,91 @@
+<div style="display: flex;align-items: center;justify-content: center;">
+  <div class="tela-cadastro">
+    <mat-accordion>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+          </mat-panel-title>
+          <mat-panel-description>
+            Registrar Pet
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <div>
+          <form class="form" [formGroup]="form" (ngSubmit)="submit()">
+
+            <div class="select-form-format">
+              <div class="select-outline">
+                <div class="icon-spacing">
+                  <mat-icon>pets</mat-icon>
+                </div>
+                <mat-form-field appearance="fill" class="select-pet-form">
+                  <mat-label>Pet</mat-label>
+                  <input matInput name="nome" formControlName="nome" placeholder="Digite o Nome do seu pet." />
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="select-form-format">
+              <div class="select-outline">
+                <div class="icon-spacing">
+                  <mat-icon>pets</mat-icon>
+                </div>
+                <mat-form-field appearance="fill" class="select-pet-form">
+                  <mat-label>Espécie</mat-label>
+                  <mat-select name="tipo" formControlName="tipo" class="select-pet-form">
+                    <mat-option value="Cachorro">Cachorro</mat-option>
+                    <mat-option value="Gato">Gato</mat-option>
+                    <mat-error *ngIf="form.controls['tipo'].errors?.['required']">Você deve selecionar algo.</mat-error>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div style="display: flex;width: 100%;justify-content: center;">
+              <button [disabled]="form.invalid" id="loginButton" class="button-agendar"
+                [ngStyle]="{ backgroundColor: form.invalid ? 'whitesmoke' : 'var(--primary-pet-color)', color: form.invalid ? '' : 'whitesmoke'}">
+
+                <mat-spinner
+                  [ngStyle]="{ display: isLoading ? 'flex' : 'none', justifyContent: isLoading ? 'center' : 'none'}"
+                  [diameter]="30" style="margin-right: 5%;width: 95%;">
+
+                </mat-spinner>
+                <p class="text-aligner"
+                  [ngStyle]="{ display: isLoading ? 'none'  : 'flex',justifyContent: isLoading ? 'none'  : 'center'}">
+                  Cadastrar</p>
+              </button>
+
+            </div>
+          </form>
+        </div>
+      </mat-expansion-panel>
+      <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+          </mat-panel-title>
+          <mat-panel-description>
+            Pets cadastrados
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <table mat-table [dataSource]="pets" class="mat-elevation-z8">
+
+          <ng-container matColumnDef="nome">
+            <th mat-header-cell *matHeaderCellDef> Nome </th>
+            <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+          </ng-container>
+
+          <!-- Name Column -->
+          <ng-container matColumnDef="tipo">
+            <th mat-header-cell *matHeaderCellDef> Espécie </th>
+            <td mat-cell *matCellDef="let element"> {{element.tipo}} </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+      </mat-expansion-panel>
+    </mat-accordion>
+
+
+
+  </div>
+</div>

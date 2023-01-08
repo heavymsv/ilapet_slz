@@ -1,0 +1,25 @@
+<app-header class="header"></app-header>
+
+<div class="voltar-linha">
+    <a (click)="router.navigate(['pubs'])" class="arrow-case">
+        <mat-icon class="seta-voltar">
+            arrow_back
+        </mat-icon>
+    </a>
+</div>
+<div *ngIf="isLoaded else loading" class="pub-real">
+
+    <h1 class="titulo-pub">{{blog.titulo}}</h1>
+    <img class="imagem-pub-real" [src]='"assets/uped_imgs/"+blog.imagem' />
+    <p [innerHTML]="blog.texto" class="corpo-pub"></p>
+
+</div>
+
+<app-footer-general [num]="1" *ngIf="verifica()"></app-footer-general>
+<app-footer-client [num]="1" *ngIf="!verifica()"></app-footer-client>
+
+
+
+<ng-template #loading>
+    <div>Loading...</div>
+</ng-template>

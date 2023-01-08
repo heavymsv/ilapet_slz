@@ -1,0 +1,11 @@
+<div class="card-base">
+    <div class="card-titulo">
+        <p class="card-titulo--principal">{{titulo}}</p>
+        <p class="card-titulo--sub">{{date}}</p>
+    </div>
+
+    <div class="corpo-card">
+        <p class="conteudo" *ngFor="let texto of corpo">{{texto}}</p>
+    </div>
+    <button class="button-card" (click)="mostrarMais()">Ver Mais</button>
+</div>

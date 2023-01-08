@@ -1,0 +1,44 @@
+<app-header class="header"></app-header>
+<div class="voltar-linha">
+    <a (click)="router.navigate(['adm'])" class="arrow-case">
+        <mat-icon class="seta-voltar">
+            arrow_back
+        </mat-icon>
+    </a>
+
+</div>
+<div class="select-consulta" *ngIf="loaded&&loaded2&&loaded3 else loading">
+
+    <!--<app-card [titulo]="verificaCompromisso(compromisso.procedimentoId)"
+       [data]="compromisso.date" [corpo]="extrairInformacao(compromisso)" [id]="compromisso.id"></app-card>-->
+    <div class="card-base">
+        <div class="card-titulo">
+            <p class="card-titulo--principal">{{verificaCompromisso(compromisso.procedimentoId)}}</p>
+            <p class="card-titulo--sub">{{date}}</p>
+        </div>
+
+        <div class="corpo-card">
+            <p class="conteudo" *ngFor="let texto of extrairInformacao(compromisso)">{{texto}}</p>
+            <p class="conteudo">{{"Status: " + ((compromisso.pendente)?"Realizado":"Pendente")}}</p>
+        </div>
+
+        <p class="card-titulo--principal">Observações</p>
+
+        <mat-form-field class="example-full-width">
+            <textarea matInput class="observacao-box" rows="10" [(ngModel)]="compromisso.obs" [readonly]="compromisso.pendente"></textarea>
+        </mat-form-field>
+
+        <button *ngIf="!compromisso.pendente" class="button-baixa" (click)="darBaixa()" [disabled]="habilitado" >Dar Baixa</button>
+
+    </div>
+
+</div>
+<app-footer-client [num]="2"></app-footer-client>
+
+
+
+
+
+<ng-template #loading>
+    <div>Loading...</div>
+</ng-template>

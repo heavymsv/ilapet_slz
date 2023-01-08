@@ -1,0 +1,44 @@
+.pop{
+   display: flex;
+   height: fit-content;
+   width: fit-content;
+   flex-direction: column;
+   padding: 20px;
+   align-items: center;
+   justify-content: space-between;
+   
+}
+
+.title-pop{
+    font-weight: 700;
+}
+
+.content-pop{
+    padding-bottom: 20px;
+
+}
+
+.buttons-pop{
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn-pop{
+    width: 90px;
+    min-width: fit-content;
+    border-radius: 10px;
+    border: solid;
+    border-width: 3px;
+    border-color: var(--primary-pet-color);
+}
+
+.buttons-pop-yes{
+    background-color: var(--primary-pet-color);
+    color: whitesmoke;
+}
+
+.buttons-pop-no{
+    background-color: white;
+    color: var(--primary-pet-color);
+}

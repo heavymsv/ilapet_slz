@@ -1,0 +1,64 @@
+.voltar-linha {
+    display: flex;
+    justify-content: flex-start;
+    margin-right: auto;
+    height: 50px;
+    width: 100%;
+
+}
+
+.arrow-case {
+    width: 20%;
+}
+
+.seta-voltar {
+    color: var(--primary-pet-color);
+    font-size: 40px;
+    width: 50px;
+    height: 50px;
+    
+}
+
+.pub-real {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    flex-direction: column;
+}
+
+.imagem-pub-real {
+    width: 95vw;
+    max-width: 700px;
+    margin: auto;
+}
+
+.conteudo-pubs{
+    width: 50vw;
+}
+
+.especial-btn{
+    background-color: transparent;
+    border: none;
+}
+
+.data-pub{
+    justify-self: flex-end ;
+    text-align: end;
+    color: gray;
+}
+
+.titulo-pub{
+    font-size: xx-large;
+    font-weight: 600;
+    text-align: center;
+    color:black
+}
+
+.corpo-pub{
+    font-size: large;
+    font-weight: 400;
+    color:black;
+    word-wrap: normal;
+    text-align: center;
+    margin-bottom: 14vh;
+}

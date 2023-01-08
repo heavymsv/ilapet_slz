@@ -1,0 +1,26 @@
+.compro{
+    
+    padding: 50px 10px ;
+    background-color: var(white);
+}
+.paragrafos{
+    margin: 0px auto;
+}
+.interno{
+    display: flex;
+    justify-content: space-between;
+    margin:0px
+}
+.button-aligner{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+.button-charmer{
+    padding: 10px;
+    background-color: var(--secondary-pet-color);
+    border:none;
+    opacity: 70%;
+    font-weight: bolder;
+    border-radius: 7px;
+}

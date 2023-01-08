@@ -1,0 +1,129 @@
+<div style="display: flex;align-items: center;justify-content: center;">
+    <div class="tela-cadastro">
+
+        <form class="form" [formGroup]="form" (ngSubmit)="submit()">
+
+            <div class="select-form-format">
+                <div class="select-outline">
+                    <div class="icon-spacing">
+                        <mat-icon>medical_services</mat-icon>
+                    </div>
+                    <mat-form-field appearance="fill" class="select-pet-form">
+                        <mat-label>Veterinário</mat-label>
+                        <mat-select name="vet" formControlName="vet" class="select-pet-form">
+                            <mat-option *ngFor="let vet of veterinarios" [value]="vet">{{
+                                vet.name
+                                }}</mat-option>
+                            <mat-error *ngIf="form.controls['vet'].errors?.['required']">Você deve selecionar
+                                algo.</mat-error>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div class="select-form-format">
+                <div class="select-outline">
+                    <div class="icon-spacing">
+                        <mat-icon>pets</mat-icon>
+                    </div>
+                    <mat-form-field appearance="fill" class="select-pet-form">
+                        <mat-label>Pet</mat-label>
+                        <mat-select name="pet" formControlName="pet" class="select-pet-form">
+                            <mat-option *ngFor="let pet of pets" [value]="pet">{{
+                                pet.name
+                                }}</mat-option>
+                            <mat-error *ngIf="form.controls['pet'].errors?.['required']">Você deve selecionar
+                                algo.</mat-error>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div class="select-form-format">
+                <div class="select-outline">
+                    <div class="icon-spacing">
+                        <mat-icon>vaccines</mat-icon>
+                    </div>
+                    <mat-form-field appearance="fill" class="select-pet-form">
+                        <mat-label>Vacina</mat-label>
+                        <mat-select name="vacina" formControlName="vacina" class="select-pet-form">
+                            <mat-option *ngFor="let vacina of vacinas" [value]="vacina">{{
+                                vacina.name
+                                }}</mat-option>
+                            <mat-error *ngIf="form.controls['vacina'].errors?.['required']">Você deve selecionar
+                                algo.</mat-error>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div class="select-form-format">
+                <div class="select-outline">
+                    <div class="icon-spacing">
+                        <mat-icon><span class="material-symbols-outlined">
+                                mixture_med
+                            </span></mat-icon>
+                    </div>
+                    <mat-form-field appearance="fill" class="select-pet-form">
+                        <mat-label>Dose</mat-label>
+                        <mat-select name="dose" formControlName="dose" class="select-pet-form">
+                            <mat-option *ngFor="let dose of doses" [value]="dose">{{
+                                dose+"º dose"
+                                }}</mat-option>
+                            <mat-error *ngIf="form.controls['dose'].errors?.['required']">Você deve selecionar
+                                algo.</mat-error>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div class="select-form-format">
+                <div class="select-outline">
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker touchUi #picker></mat-datepicker>
+                        <mat-label>Dia</mat-label>
+                        <input matInput [matDatepickerFilter]="myFilter" name="data" formControlName="data"
+                            [matDatepicker]="picker">
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div class="select-form-format">
+                <div class="select-outline">
+                    <div class="icon-spacing">
+                        <mat-icon>schedule</mat-icon>
+                    </div>
+                    <mat-form-field appearance="fill" class="select-pet-form">
+                        <mat-label>Horário</mat-label>
+                        <mat-select class="select-pet-form" name="hora" formControlName="hora">
+                            <mat-option value="8:00">8:00</mat-option>
+                            <mat-option value="18:00">18:00</mat-option>
+                            <mat-error *ngIf="form.controls['hora'].errors?.['required']">Você deve selecionar
+                                algo.</mat-error>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div style="display: flex;width: 100%;justify-content: center;">
+                <button [disabled]="form.invalid" id="loginButton" class="button-agendar"
+                    [ngStyle]="{ backgroundColor: form.invalid ? 'whitesmoke' : 'var(--primary-pet-color)', color: form.invalid ? '' : 'whitesmoke'}">
+
+                    <mat-spinner
+                        [ngStyle]="{ display: isLoading ? 'flex' : 'none', justifyContent: isLoading ? 'center' : 'none'}"
+                        [diameter]="30" style="margin-right: 5%;width: 95%;">
+
+                    </mat-spinner>
+                    <p class="text-aligner"
+                        [ngStyle]="{ display: isLoading ? 'none'  : 'flex',justifyContent: isLoading ? 'none'  : 'center'}">
+                        Agendar</p>
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
