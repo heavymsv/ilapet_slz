@@ -15,6 +15,7 @@ public class ConfirmationToken {
     private Long id;
     @NotNull
     private String token;
+
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
