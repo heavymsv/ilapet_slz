@@ -47,7 +47,7 @@ public class UserService implements UserDetailsService {
         if(emailExists){
             throw new SQLIntegrityConstraintViolationException("Email already registered.");
         }
-        user.setPassword(bCryptPasswordEncoder.encode(UUID.randomUUID().toString()));
+        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         if(user.getAccessLevel()==null)
             user.setAccessLevel(roleRepository.findByAuthority(AccessLevel.ROLE_CLIENT));
         User savedUser = userRepository.save(user);

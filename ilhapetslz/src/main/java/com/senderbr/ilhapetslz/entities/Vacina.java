@@ -20,4 +20,6 @@ public class Vacina {
     private String name;
 
     private int doses;
+
+    private PETS_TIPO tipo;
 }

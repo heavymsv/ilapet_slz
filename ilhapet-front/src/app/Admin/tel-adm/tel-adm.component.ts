@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import IUser from 'src/app/interfaces/IUser';
+import IVets from 'src/app/interfaces/IVets';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -18,7 +19,9 @@ export class TelAdmComponent implements OnInit {
 
   ngOnInit(): void {
     this.userService.get().subscribe((data)=>{
-      this.users = data
+      console.log('users: ',data);
+      
+      this.users = data.filter((user:IUser)=>{return user.accessLevel.authority=='ROLE_CLIENT'});
     })
   }
 

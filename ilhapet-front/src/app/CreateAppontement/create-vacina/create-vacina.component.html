@@ -28,7 +28,7 @@
                     </div>
                     <mat-form-field appearance="fill" class="select-pet-form">
                         <mat-label>Pet</mat-label>
-                        <mat-select name="pet" formControlName="pet" class="select-pet-form">
+                        <mat-select (closed)="changePet($event)" name="pet" formControlName="pet" class="select-pet-form">
                             <mat-option *ngFor="let pet of pets" [value]="pet">{{
                                 pet.name
                                 }}</mat-option>
@@ -47,7 +47,7 @@
                     <mat-form-field appearance="fill" class="select-pet-form">
                         <mat-label>Vacina</mat-label>
                         <mat-select name="vacina" formControlName="vacina" class="select-pet-form">
-                            <mat-option *ngFor="let vacina of vacinas" [value]="vacina">{{
+                            <mat-option *ngFor="let vacina of vacinasASelecionar" [value]="vacina">{{
                                 vacina.name
                                 }}</mat-option>
                             <mat-error *ngIf="form.controls['vacina'].errors?.['required']">Você deve selecionar
@@ -84,7 +84,7 @@
                         <mat-datepicker touchUi #picker></mat-datepicker>
                         <mat-label>Dia</mat-label>
                         <input matInput [matDatepickerFilter]="myFilter" name="data" formControlName="data"
-                            [matDatepicker]="picker">
+                            [matDatepicker]="picker"  readonly="true">
                     </mat-form-field>
                 </div>
             </div>

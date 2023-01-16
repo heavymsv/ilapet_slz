@@ -7,7 +7,7 @@ export default interface IUser {
     email?:string,
     telefone?:string,
     password?:string,
-    acessLevel?:IRole
+    accessLevel?:IRole
     enabled?:boolean
   }
   

@@ -59,7 +59,7 @@
                         <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
                         <mat-datepicker touchUi #picker></mat-datepicker>
                         <mat-label>Dia</mat-label>
-                        <input matInput [matDatepickerFilter]="myFilter" name="data" formControlName="data" [matDatepicker]="picker">
+                        <input matInput [matDatepickerFilter]="myFilter" name="data" formControlName="data" [matDatepicker]="picker"  readonly="true">
                     </mat-form-field>
                 </div>
             </div>

@@ -55,6 +55,7 @@ export class CreateVacinaComponent implements OnInit {
   isError: boolean = false;
 
   vacinas:IVacina[]=[]
+  vacinasASelecionar:IVacina[]=[]
   doses:number[]=[]
 
   constructor(
@@ -72,7 +73,7 @@ export class CreateVacinaComponent implements OnInit {
     .get()
     .subscribe((data)=>{
       this.vacinas = data
-      this.form.controls['vacina'].setValue(this.vacinas[0])
+      //this.form.controls['vacina'].setValue(this.vacinas[0])
       this.gerarDoses()
     })
 
@@ -107,11 +108,23 @@ export class CreateVacinaComponent implements OnInit {
   gerarDoses(){
     this.doses=[]
     console.log(this.form.controls['vacina'].value);
-    
+
     let limite = this.form.controls['vacina'].value.doses
     for(let i=1;i<=limite;i++){
       this.doses.push(i)
     }
+  }
+
+  changePet($event:any){
+
+    //this.form.controls['vacina'].setValue(null)
+    this.vacinasASelecionar = this.vacinas.filter((vacina:IVacina)=>{
+      console.log('tipo: ',vacina.tipo);
+      console.log('tipo A Selec: ',this.form.controls['pet'].value.tipo);
+      
+      return vacina.tipo == this.form.controls['pet'].value.tipo
+    })
+
   }
   
   submit() {

@@ -74,9 +74,9 @@ export class CadastroComponent {
 
     let password = this.form.controls['password'].value;
     let repPassword = this.form.controls['repPassword'].value;
-    let role:IRole ={authority:1,id:1} 
+    let role:IRole ={authority:'ROLE_CLIENT',id:1} 
 
-    let user:IUser={email:email,password:password,username:nome,acessLevel:role,telefone:telefone}
+    let user:IUser={email:email,password:password,username:email,name:nome,accessLevel:role,telefone:telefone,enabled:true}
 
     if (password == repPassword) {
       this.userService.signup(user).subscribe(
