@@ -6,6 +6,7 @@ import IBlog from 'src/app/interfaces/IBlog';
 import IImagem from 'src/app/interfaces/IImagem';
 import { AuthService } from 'src/app/services/auth.service';
 import { BlogService } from 'src/app/services/blog.service';
+import { environment } from 'src/enviroment';
 
 @Component({
   selector: 'app-nova-publicacao',
@@ -50,7 +51,7 @@ export class NovaPublicacaoComponent {
   }
 
   onSubmit() {
-    const upload$ = this.http.post<any>("http://localhost:8080/blog/img", this.formData, {
+    const upload$ = this.http.post<any>(environment.apiUrl + "/blog/img", this.formData, {
       headers: this.auth.buildHeader(),
     }).pipe(finalize(() => {
       this.blogService.create(this.blog).subscribe((data) => {

@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import IPet from '../interfaces/IPet';
 import { AuthService } from './auth.service';
+import { environment } from 'src/enviroment';
 
 @Injectable({
   providedIn: 'root'
@@ -14,35 +15,35 @@ export class PetService {
   ) {}
 
   get(){
-    return this.http.get<IPet[]>('http://localhost:8080/pet/list?term='
+    return this.http.get<IPet[]>(`${environment.apiUrl}/pet/list?term=`
     , {
       headers: this.auth.buildHeader(),
     });
   }
 
   getByOwner(id: number){
-    return this.http.get<IPet[]>(`http://localhost:8080/pet/owner?id=${id}`
+    return this.http.get<IPet[]>(`${environment.apiUrl}/pet/owner?id=${id}`
     , {
       headers: this.auth.buildHeader(),
     });
   }
 
   getById(id: number){
-    return this.http.get<IPet[]>(`http://localhost:8080/pet/${id}`
+    return this.http.get<IPet[]>(`${environment.apiUrl}/pet/${id}`
     , {
       headers: this.auth.buildHeader(),
     });
   }
 
   update(id: number, data: IPet) {
-    return this.http.put<IPet>(`http://localhost:8080/pet/${id}`, data
+    return this.http.put<IPet>(`${environment.apiUrl}/pet/${id}`, data
     , {
       headers: this.auth.buildHeader(),
     });
   }
 
   create(data: IPet) {
-    return this.http.post<IPet>('http://localhost:8080/pet', data
+    return this.http.post<IPet>(`${environment.apiUrl}/pet`, data
     , {
       headers: this.auth.buildHeader(),
     });

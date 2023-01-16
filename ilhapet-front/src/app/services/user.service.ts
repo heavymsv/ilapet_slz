@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import IOAuthResponse from '../interfaces/IOAuthResponse';
 import IUser from '../interfaces/IUser';
 import { AuthService } from './auth.service';
+import { environment } from 'src/enviroment';
 
 @Injectable({
   providedIn: 'root'
@@ -17,14 +18,14 @@ export class UserService {
   signup(user:IUser) {
     
     return this.http.post<any>(
-      `http://localhost:8080/user/signup`,user
+      `${environment.apiUrl}/user/signup`,user
     );
   }
 
   getUser(id:number) {
     
     return this.http.get<IUser>(
-      `http://localhost:8080/user/${id}`
+      `${environment.apiUrl}/user/${id}`
       , {
         headers: this.auth.buildHeader(),
       });
@@ -32,7 +33,7 @@ export class UserService {
 
   get(){
     return this.http.get<IUser[]>(
-      `http://localhost:8080/user/all`
+      `${environment.apiUrl}/user/all`
       , {
         headers: this.auth.buildHeader(),
       });
@@ -40,7 +41,7 @@ export class UserService {
 
   getByName(name:string){
     return this.http.get<IUser>(
-      `http://localhost:8080/user/name?username=${name}`
+      `${environment.apiUrl}/user/name?username=${name}`
       , {
         headers: this.auth.buildHeader(),
       });
@@ -53,7 +54,7 @@ export class UserService {
       .set('grant_type', 'password');
 
     return this.http.post<IOAuthResponse>(
-      `http://localhost:8080/oauth/token`,
+      `${environment.apiUrl}/oauth/token`,
       body.toString(),
       {
         headers: new HttpHeaders()
