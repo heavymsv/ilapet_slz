@@ -20,6 +20,10 @@
     max-width: 400px;
 }
 
+.form{
+    padding-bottom: 50px;
+}
+
 .select-outline{
     display: flex;
     align-items: center;

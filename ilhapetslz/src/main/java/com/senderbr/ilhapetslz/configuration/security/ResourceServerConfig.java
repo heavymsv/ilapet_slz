@@ -45,7 +45,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
                     .anyRequest()
                     .permitAll();*/
 
-                    .cors().and()
+                    .cors().and().csrf().disable()
                     .authorizeRequests()
                     .antMatchers(HttpMethod.GET,"/vacina/**","/veterinario/**","/exame/**","/user/**").hasAnyRole("CLIENT","ADMIN")
                     .antMatchers("/vacina/**","/veterinario/**","/exame/**","/user/**").hasAnyRole("ADMIN")

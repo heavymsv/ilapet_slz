@@ -1,7 +1,7 @@
 insert into role(authority) values (0);
 insert into role(authority) values (1);
 
-insert into user(name, password, email, username, telefone, enabled, access_level_id) values ('admin', '$2a$10$eACCYoNOHEqXve8aIWT8Nu3PkMXWBaOxJ9aORUYzfMQCbVBIhZ8tG', 'admin_user@mail.com', 'admin_user@mail.com', "98982734057", true, 2);
+insert into user(name, password, email, username, telefone, enabled, access_level_id) values ('admin', '$2a$10$eACCYoNOHEqXve8aIWT8Nu3PkMXWBaOxJ9aORUYzfMQCbVBIhZ8tG', 'admin_user@mail.com', 'admin_user@mail.com', "98982734057", true, 2),('user', '$2a$10$eACCYoNOHEqXve8aIWT8Nu3PkMXWBaOxJ9aORUYzfMQCbVBIhZ8tG', 'user_user@mail.com', 'user_user@mail.com', "98982734057", true, 1);
 
 insert into vacina(name, doses, tipo) values ('Múltipla (Virose) - Canino', 4, 0);
 insert into vacina(name, doses, tipo) values ('Múltipla (Virose) - Felino', 4, 1);

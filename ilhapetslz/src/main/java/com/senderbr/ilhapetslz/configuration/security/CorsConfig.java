@@ -26,14 +26,14 @@ public class CorsConfig {
         if (Arrays.asList(env.getActiveProfiles()).contains("test")){
             url = "http://localhost:4200";
         }else if (Arrays.asList(env.getActiveProfiles()).contains("dev")) {
-            url = "http://localhost:4200";
+            url = "http://18.188.133.236";
         }else if (Arrays.asList(env.getActiveProfiles()).contains("prod")) {
             url = uri;
         }
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         CorsConfiguration config = new CorsConfiguration();
         config.setAllowCredentials(true);
-        config.addAllowedOrigin(url);
+        config.addAllowedOriginPattern("*");
         config.addAllowedHeader("*");
         config.setAllowedMethods(Arrays.asList("HEAD",
                 "GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"));

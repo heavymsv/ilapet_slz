@@ -71,6 +71,7 @@
     width: 90%;
     text-align: left;
     align-self: flex-start;
+    padding-bottom: 50px;
 }
 
 @media only screen and (min-width: 768px) {
