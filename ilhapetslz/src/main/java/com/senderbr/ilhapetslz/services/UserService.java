@@ -52,7 +52,11 @@ public class UserService implements UserDetailsService {
             user.setAccessLevel(roleRepository.findByAuthority(AccessLevel.ROLE_CLIENT));
         User savedUser = userRepository.save(user);
 
-        //confirmationTokenService.createTokenAndSendEmail(user, true);
+        try {
+            confirmationTokenService.createTokenAndSendEmail(user, true);
+        }catch (Exception ex){
+            System.out.println(ex.getMessage());
+        }
         return savedUser;
     }
 

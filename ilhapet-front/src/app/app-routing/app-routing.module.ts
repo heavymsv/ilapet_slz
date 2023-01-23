@@ -61,10 +61,6 @@ const routes: Routes = [
     }
   },
   {
-    path: '.well-known/pki-validation/DA24EF0270B7B1C115993F6447876381.txt',
-    component: ShowCertificateComponent
-  },
-  {
     path: 'pubs',
     component: PublicacoesComponent
   },

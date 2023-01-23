@@ -19,27 +19,25 @@ public class EmailLayout {
 
     public String buildNewUserEmail(User user, String token){
 
-        String url = "http://localhost:4200/";
-//        if (Arrays.asList(env.getActiveProfiles()).contains("test")){
-//            url = "http://localhost:4200/";
-//        }else if (Arrays.asList(env.getActiveProfiles()).contains("dev")) {
-//            url = "http://localhost:4200/";
-//        }else if (Arrays.asList(env.getActiveProfiles()).contains("prod")) {
-//            url = uri;
-//        }
+        String url = "";
+        if (Arrays.asList(env.getActiveProfiles()).contains("test")){
+            url = "http://localhost:4200";
+        }else if (Arrays.asList(env.getActiveProfiles()).contains("dev")) {
+            url = "http://18.188.133.236";
+        }else if (Arrays.asList(env.getActiveProfiles()).contains("prod")) {
+            url = uri;
+        }
 
         return
             "    <div class='email-container' style='width: 100%;'>\n" +
-            "        <div class='email-header' style='height: fit-content;width: 90%;border-radius:32px;margin: 0 auto;background-color: #E20074;padding: 0 40px;'>\n" +
-            "            <div class='header-logo' style='text-align: center;color: white;margin-bottom:24px;font-size: 60px;font-weight: bold;white-space: nowrap;'>T-WMS</div>\n" +
-            "            <div class='header-text' style='text-align: center; padding-bottom:20px;color: white;font-family: Arial, Helvetica, sans-serif;font-size: 32px;font-weight: 600;line-height: 50px;vertical-align: middle;'>Confirm your email</div>\n" +
+            "        <div class='email-header' style='height: fit-content;width: 90%;border-radius:32px;margin: 0 auto;background-color: #212248;padding: 0 40px;'>\n" +
+            "            <div class='header-logo' style='text-align: center;color: white;margin-bottom:24px;font-size: 60px;font-weight: bold;white-space: nowrap;'>Ilha Pet</div>\n" +
+            "            <div class='header-text' style='text-align: center; padding-bottom:20px;color: white;font-family: Arial, Helvetica, sans-serif;font-size: 32px;font-weight: 600;line-height: 50px;vertical-align: middle;'>Obrigado por se registrar!!</div>\n" +
             "        </div>\n" +
             "        <div class='email-body' style='font-size: 20px;color: black;padding: 16px 28px;'>\n" +
-            "            <p>Hi " + user.getUsername() + ",</p>\n" +
-            "            <p>You're email have been registered on <a href='"+url+"' target='_blank'>T-wms</a> platform.</p>\n" +
-            "                <p> Set your new password by clicking on the link below.</p>\n" +
-            "            <a href='"+url+"confirmation?token="+ token + "' style='border-radius:32px;padding: 12px 48px;font-size: 24px;text-decoration: none;color: white;width: 100%;'>\n" +
-            "                    <p class='email-link' style='border-radius:32px;padding:12px 60px;margin: 30px;height: 40px;cursor: pointer;width: fit-content;background-color: #E20074;line-height: 40px;'>Reset password</p></a>\n" +
+            "            <p>Olá " + user.getName() + ",</p>\n" +
+            "            <p>Você está registrado no nosso site. Termine sua configuração inserindo seus pets no nosso site.</p>\n" +
+            "                <p> É super fácil, vá na guia de serviçoes e clique em 'Pets', lá você poderá registrar seu amigo(a)!!</p>\n"+
 
             "        </div>\n" +
             "    </div>\n";

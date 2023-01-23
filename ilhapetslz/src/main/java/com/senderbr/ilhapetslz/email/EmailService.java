@@ -29,8 +29,8 @@ public class EmailService implements EmailSender{
             MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, "utf-8");
             helper.setText(email, true);
             helper.setTo(to);
-            helper.setSubject("Confirm your email");
-            helper.setFrom(emailSender, "T-WMS");
+            helper.setSubject("Obrigado por se cadastrar");
+            helper.setFrom(emailSender, "Ilha Pet SLZ");
             mailSender.send(mimeMessage);
         } catch (MessagingException | UnsupportedEncodingException e){
             //TODO: change thrown error type
