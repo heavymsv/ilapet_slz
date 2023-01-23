@@ -17,6 +17,7 @@ import { HistoricoEspecificoComponent } from '../Admin/historico-especifico/hist
 import { UmaPublicacaoComponent } from '../Publications/uma-publicacao/uma-publicacao.component';
 import { DadosClienteComponent } from '../LoginECadastro/dados-cliente/dados-cliente.component';
 import { AuthGuardService } from '../services/auth-guard.service';
+import { ShowCertificateComponent } from '../show-certificate/show-certificate.component';
 
 const routes: Routes = [
   {
@@ -58,6 +59,10 @@ const routes: Routes = [
     data: {
       expectedRoles: ["ROLE_ADMIN"]
     }
+  },
+  {
+    path: '.well-known/pki-validation/DA24EF0270B7B1C115993F6447876381.txt',
+    component: ShowCertificateComponent
   },
   {
     path: 'pubs',

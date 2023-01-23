@@ -55,6 +55,7 @@ import { MarcacaoAdmComponent } from './Admin/marcacao-adm/marcacao-adm.componen
 import { CardPubComponent } from './Publications/card-pub/card-pub.component';
 import { DadosClienteComponent } from './LoginECadastro/dados-cliente/dados-cliente.component';
 import { UsuarioAdmComponent } from './Admin/usuario-adm/usuario-adm.component';
+import { ShowCertificateComponent } from './show-certificate/show-certificate.component';
 
 export const options: Partial<null|IConfig> | (() => Partial<IConfig>) = null;
 
@@ -87,6 +88,7 @@ export const options: Partial<null|IConfig> | (() => Partial<IConfig>) = null;
     CardPubComponent,
     DadosClienteComponent,
     UsuarioAdmComponent,
+    ShowCertificateComponent,
 
     
   ],
