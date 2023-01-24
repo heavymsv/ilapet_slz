@@ -29,7 +29,7 @@ public class EmailService implements EmailSender{
             MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, "utf-8");
             helper.setText(email, true);
             helper.setTo(to);
-            helper.setSubject("Obrigado por se cadastrar");
+            helper.setSubject("Ilha pet Veterinária");
             helper.setFrom(emailSender, "Ilha Pet SLZ");
             mailSender.send(mimeMessage);
         } catch (MessagingException | UnsupportedEncodingException e){

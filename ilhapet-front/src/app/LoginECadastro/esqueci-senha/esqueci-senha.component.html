@@ -1,0 +1,43 @@
+<div class="tela-login">
+    <app-header class="header"></app-header>
+    <h1 class="titulo-login">Login</h1>
+
+    <form class="form" [formGroup]="form" (ngSubmit)="submit()">
+        <div class="select-form-format">
+            <div class="select-outline">
+                <div class="icon-spacing">
+                    <span class="material-symbols-outlined">mail</span>
+                </div>
+                <mat-form-field class="Sintomas">
+                    <mat-label>E-mail cadastrado</mat-label>
+                    <input matInput type="text" placeholder="E-mail" name="email" formControlName="email"
+                        class="campo-login">
+                </mat-form-field>
+                <!--<input type="text" [(ngModel)]="sintomas" id="" class="sintomas-field">-->
+
+            </div>
+        </div>
+        <div style="display: flex;width: 100%;justify-content: center;">
+            <button [disabled]="form.invalid" id="loginButton" class="button-agendar"
+                [ngStyle]="{ backgroundColor: form.invalid ? 'whitesmoke' : 'var(--primary-pet-color)', color: form.invalid ? '' : 'whitesmoke'}">
+
+                <mat-spinner
+                    [ngStyle]="{ display: isLoading ? 'flex' : 'none', justifyContent: isLoading ? 'center' : 'none'}"
+                    [diameter]="30" style="margin-right: 5%;width: 95%;">
+
+                </mat-spinner>
+                <p class="text-aligner"
+                    [ngStyle]="{ display: isLoading ? 'none'  : 'flex',justifyContent: isLoading ? 'none'  : 'center'}">
+                    Resgatar senha</p>
+            </button>
+
+        </div>
+
+
+    </form>
+    <div>
+        <app-footer-general [num]="2"></app-footer-general>
+    </div>
+
+
+</div>

@@ -1,0 +1,65 @@
+<div class="tela-cadastro">
+    <app-header class="header"></app-header>
+    <h1 class="titulo-cadastro">Cadastre-se</h1>
+
+    
+    <form class="form" [formGroup]="form" (ngSubmit)="submit()">
+
+        <div class="select-form-format">
+            <div class="select-outline">
+                <div class="icon-spacing">
+                    <span class="material-symbols-outlined">lock</span>
+                </div>
+                <mat-form-field class="Sintomas">
+                    <mat-label>Nova Senha</mat-label>
+                    <input matInput type="password" [(ngModel)]="ref1" placeholder="Senha" name="password" formControlName="password" class="campo-login">
+                </mat-form-field>
+                <!--<input type="text" [(ngModel)]="sintomas" id="" class="sintomas-field">-->
+
+            </div>
+        </div>
+        <div style="height: 3vh;">
+            <p *ngIf="form.controls['password'].errors?.['required']">É necessário informar a nova senha</p>
+            <p *ngIf="form.controls['password'].errors?.['minlength']">A senha deve ter no mínimo 5 caracteres!</p>
+            <p *ngIf="form.controls['password'].errors?.['maxlength']">A senha deve ter no máximo 20 caracteres!</p>
+            
+        </div>
+
+        <div class="select-form-format">
+            <div class="select-outline">
+                <div class="icon-spacing">
+                    <span class="material-symbols-outlined">lock</span>
+                </div>
+                <mat-form-field class="Sintomas">
+                    <mat-label>Repita a Senha</mat-label>
+                    <input matInput type="password" placeholder="Senha" [(ngModel)]="ref2" name="repPassword" formControlName="repPassword" class="campo-login">
+                </mat-form-field>
+                <!--<input type="text" [(ngModel)]="sintomas" id="" class="sintomas-field">-->
+
+            </div>
+        </div>
+        <div style="height: 3vh;">
+            <p *ngIf="form.controls['password'].errors?.['required']">É necessário repetir a senha</p>
+            <p *ngIf="form.controls['password'].errors?.['minlength']">A senha deve ter no mínimo 5 caracteres!</p>
+            <p *ngIf="form.controls['password'].errors?.['maxlength']">A senha deve ter no máximo 20 caracteres!</p>
+            <p *ngIf="ref1!=ref2">Os Campos não são iguais!</p>
+        </div>
+
+
+        <div style="display: flex;width: 100%;justify-content: center;">
+            <button [disabled]="form.invalid" id="loginButton" class="button-agendar"  [ngStyle]="{ backgroundColor: form.invalid ? 'whitesmoke' : 'var(--primary-pet-color)', color: form.invalid ? '' : 'whitesmoke'}">
+    
+                <mat-spinner [ngStyle]="{ display: isLoading ? 'flex' : 'none', justifyContent: isLoading ? 'center' : 'none'}"
+                    [diameter]="30" style="margin-right: 5%;width: 95%;">
+                
+                </mat-spinner>
+                <p class="text-aligner" [ngStyle]="{ display: isLoading ? 'none'  : 'flex',justifyContent: isLoading ? 'none'  : 'center'}">Cadastrar</p>
+            </button>
+
+        </div>
+        
+    
+    </form>
+    <app-footer-general [num]="2"></app-footer-general>
+</div>
+

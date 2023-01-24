@@ -109,10 +109,10 @@ public class UserService implements UserDetailsService {
     public void setNewPassword(String token, String password){
         ConfirmationToken confirmationToken = confirmationTokenService.getConfirmationToken(token);
         if (confirmationToken.getConfirmedAt() != null){
-            throw new IllegalArgumentException("Token has already been used.");
+            throw new IllegalArgumentException("Token já usado.");
         }
         if(confirmationToken.getExpiredAt().isBefore(LocalDateTime.now())){
-            throw new IllegalArgumentException("Token has expired");
+            throw new IllegalArgumentException("Token expirado");
         }
         confirmationToken.setConfirmedAt(LocalDateTime.now());
         User user = this.getUserById(confirmationToken.getUser().getId());

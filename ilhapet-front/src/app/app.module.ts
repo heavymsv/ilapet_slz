@@ -56,6 +56,9 @@ import { CardPubComponent } from './Publications/card-pub/card-pub.component';
 import { DadosClienteComponent } from './LoginECadastro/dados-cliente/dados-cliente.component';
 import { UsuarioAdmComponent } from './Admin/usuario-adm/usuario-adm.component';
 import { ShowCertificateComponent } from './show-certificate/show-certificate.component';
+import { EsqueciSenhaComponent } from './LoginECadastro/esqueci-senha/esqueci-senha.component';
+import { RecuperaSenhaComponent } from './recupera-senha/recupera-senha.component';
+import { NovaSenhaComponent } from './LoginECadastro/nova-senha/nova-senha.component';
 
 export const options: Partial<null|IConfig> | (() => Partial<IConfig>) = null;
 
@@ -89,6 +92,9 @@ export const options: Partial<null|IConfig> | (() => Partial<IConfig>) = null;
     DadosClienteComponent,
     UsuarioAdmComponent,
     ShowCertificateComponent,
+    EsqueciSenhaComponent,
+    RecuperaSenhaComponent,
+    NovaSenhaComponent,
 
     
   ],

@@ -18,6 +18,8 @@ import { UmaPublicacaoComponent } from '../Publications/uma-publicacao/uma-publi
 import { DadosClienteComponent } from '../LoginECadastro/dados-cliente/dados-cliente.component';
 import { AuthGuardService } from '../services/auth-guard.service';
 import { ShowCertificateComponent } from '../show-certificate/show-certificate.component';
+import { EsqueciSenhaComponent } from '../LoginECadastro/esqueci-senha/esqueci-senha.component';
+import { NovaSenhaComponent } from '../LoginECadastro/nova-senha/nova-senha.component';
 
 const routes: Routes = [
   {
@@ -35,6 +37,10 @@ const routes: Routes = [
   {
     path: 'cadastro',
     component: CadastroComponent,
+  },
+  {
+    path: 'recuperar-senha',
+    component: EsqueciSenhaComponent,
   },
   {
     path: 'gerar-alerta',
@@ -91,7 +97,12 @@ const routes: Routes = [
     data: {
       expectedRoles: ["ROLE_CLIENT","ROLE_ADMIN"]
     }
-  }
+  },
+  {
+    path: 'confirmation',
+    component: NovaSenhaComponent
+  },
+  
 ]
 
 @NgModule({

@@ -64,4 +64,17 @@ export class UserService {
     );
   }
 
+  esqueciSenha(email:string){
+    return this.http.get<any>(`${environment.apiUrl}/user/resetpassword?email=${email}`)
+  }
+
+  changePassword(token:string, password:string){
+    const body = new HttpParams()
+    .set("token", token)
+    .set("password", password)
+    return this.http.put<any>(`${environment.apiUrl}/user/setpassword`, body)
+
+  }
+
+
 }

@@ -61,7 +61,8 @@
     <div class="cadastro-login">
         <h4 class="simple-text">Não tem uma conta? <a style="text-decoration: underline;"
                 (click)="router.navigate(['cadastro'])">Crie uma</a></h4>
-        <h4 class="simple-text" style="display:none">Não Consegue acessar sua conta?</h4>
+        <h4 class="simple-text">Não Consegue acessar sua conta? <a style="text-decoration: underline;"
+                (click)="router.navigate(['recuperar-senha'])">Resgate sua senha</a></h4>
         <app-footer-general [num]="2"></app-footer-general>
 
     </div>
