@@ -49,10 +49,14 @@ export const MY_FORMATS = {
 export class CreateVacinaComponent implements OnInit {
 
   @Input() veterinarios:IVets[]
+  veterinariosCorreto:IVets[]=[]
   @Input() pets: IPet[]
   form: FormGroup;
   isLoading: boolean = false;
   isError: boolean = false;
+
+  filterDays: number[] = []
+  hours:string[] = []
 
   vacinas:IVacina[]=[]
   vacinasASelecionar:IVacina[]=[]
@@ -68,6 +72,12 @@ export class CreateVacinaComponent implements OnInit {
   ){}
 
   ngOnInit(): void {
+
+    this.veterinarios.map((vet)=>{
+      if(vet.especs.includes(2)){
+        this.veterinariosCorreto.push(vet)
+      }
+    })
     
     this.vacinaService
     .get()
@@ -102,8 +112,18 @@ export class CreateVacinaComponent implements OnInit {
     const day = d.weekday();
     // Prevent Saturday and Sunday from being selected.
     //console.log(day)
-    return day !== 0 && day !== 6;
+    return this.filterDays.includes(day);
   };
+  
+  selectVet = () =>{
+    this.filterDays = this.form.controls["vet"].value.days
+  }
+
+  diaSelec = ($event:any) => {
+    
+    this.hours = this.form.controls["vet"].value.hours[this.filterDays.indexOf((new Date(this.form.controls["data"].value._d)).getDay())]
+    //this.hours = this.form.controls["data"].value
+  }
 
   gerarDoses(){
     this.doses=[]

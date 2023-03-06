@@ -51,6 +51,12 @@ export class CreateExameComponent implements OnInit {
   exames:IExame[]=[]
   @Input() pets: IPet[]
   @Input() veterinarios:IVets[]
+
+  veterinariosCorreto:IVets[]=[]
+
+  filterDays: number[] = []
+  hours:string[] = []
+
   form: FormGroup;
   isLoading: boolean = false;
   isError: boolean = false;
@@ -65,6 +71,12 @@ export class CreateExameComponent implements OnInit {
   ){}
 
   ngOnInit(): void {
+
+    this.veterinarios.map((vet)=>{
+      if(vet.especs.includes(1)){
+        this.veterinariosCorreto.push(vet)
+      }
+    })
     
     this.exameService
     .get()
@@ -91,8 +103,18 @@ export class CreateExameComponent implements OnInit {
     const day = d.weekday();
     // Prevent Saturday and Sunday from being selected.
     //console.log(day)
-    return day !== 0 && day !== 6;
+    return this.filterDays.includes(day);
   };
+
+  selectVet = () =>{
+    this.filterDays = this.form.controls["vet"].value.days
+  }
+
+  diaSelec = ($event:any) => {
+    
+    this.hours = this.form.controls["vet"].value.hours[this.filterDays.indexOf((new Date(this.form.controls["data"].value._d)).getDay())]
+    //this.hours = this.form.controls["data"].value
+  }
 
   submit() {
     this.isLoading = true

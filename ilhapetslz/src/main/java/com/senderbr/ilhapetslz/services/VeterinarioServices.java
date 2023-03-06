@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityNotFoundException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -37,6 +38,9 @@ public class VeterinarioServices {
     public Veterinario put(Long id, Veterinario veterinario){
         Veterinario oldVeterinario = this.getById(id);
         oldVeterinario.setName(veterinario.getName());
+        oldVeterinario.setDays(veterinario.getDays());
+        oldVeterinario.setEspecs(veterinario.getEspecs());
+        oldVeterinario.setHours(veterinario.getHours());
 
         return this.post(oldVeterinario);
     }
@@ -48,4 +52,33 @@ public class VeterinarioServices {
         repository.delete(oldVeterinario);
     }
 
+    public Veterinario postWeekdays(Long veterinarioId, List<Integer> weekdays) {
+        Veterinario oldVeterinario = this.getById(veterinarioId);
+        ArrayList<Integer> days = new ArrayList<>();
+        for(int i:weekdays){
+            days.add(i);
+        }
+        oldVeterinario.setDays(days);
+
+        return this.post(oldVeterinario);
+
+    }
+
+    public Veterinario postHours(Long veterinarioId, List<List<String>> hours) {
+
+        Veterinario oldVeterinario = this.getById(veterinarioId);
+        ArrayList<ArrayList<String>> hourDaily = new ArrayList<>();
+        ArrayList<String> hourly = new ArrayList<>();
+        for(List<String> dayHour:hours){
+            hourly = new ArrayList<>();
+            for(String hour:dayHour) {
+                hourly.add(hour);
+            }
+            hourDaily.add(hourly);
+        }
+        oldVeterinario.setHours(hourDaily);
+
+        return this.post(oldVeterinario);
+
+    }
 }

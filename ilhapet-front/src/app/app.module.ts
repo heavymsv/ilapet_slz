@@ -59,6 +59,8 @@ import { ShowCertificateComponent } from './show-certificate/show-certificate.co
 import { EsqueciSenhaComponent } from './LoginECadastro/esqueci-senha/esqueci-senha.component';
 import { RecuperaSenhaComponent } from './recupera-senha/recupera-senha.component';
 import { NovaSenhaComponent } from './LoginECadastro/nova-senha/nova-senha.component';
+import { GerenciaVetComponent } from './Admin/gerencia-vet/gerencia-vet.component';
+import { CreateTosaComponent } from './CreateAppontement/create-tosa/create-tosa.component';
 
 export const options: Partial<null|IConfig> | (() => Partial<IConfig>) = null;
 
@@ -95,6 +97,8 @@ export const options: Partial<null|IConfig> | (() => Partial<IConfig>) = null;
     EsqueciSenhaComponent,
     RecuperaSenhaComponent,
     NovaSenhaComponent,
+    GerenciaVetComponent,
+    CreateTosaComponent,
 
     
   ],

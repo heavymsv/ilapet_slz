@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+
 import { FormBuilder, FormControl, FormGroup, FormGroupDirective, NgForm, Validators } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
@@ -38,9 +39,9 @@ export const MY_FORMATS = {
 };
 
 @Component({
-  selector: 'app-create-consulta',
-  templateUrl: './create-consulta.component.html',
-  styleUrls: ['./create-consulta.component.css'],
+  selector: 'app-create-tosa',
+  templateUrl: './create-tosa.component.html',
+  styleUrls: ['./create-tosa.component.css'],
   providers: [
     {
       provide: DateAdapter,
@@ -51,10 +52,7 @@ export const MY_FORMATS = {
     { provide: MAT_DATE_FORMATS, useValue: MY_FORMATS },
   ],
 })
-
-
-
-export class CreateConsultaComponent implements OnInit {
+export class CreateTosaComponent implements OnInit {
 
   @Input() veterinarios: IVets[]
   @Input() pets: IPet[]
@@ -80,7 +78,7 @@ export class CreateConsultaComponent implements OnInit {
   ngOnInit(): void {
 
     this.veterinarios.map((vet)=>{
-      if(vet.especs.includes(0)){
+      if(vet.especs.includes(3)){
         this.veterinariosCorreto.push(vet)
       }
     })
@@ -120,7 +118,7 @@ export class CreateConsultaComponent implements OnInit {
   }
 
   submit() {
-    if (this.form.controls['especialidade'].value == 'clinica') {
+    
       this.isLoading = true
       this.isError = false
       let vet = this.form.controls['vet'].value;
@@ -131,8 +129,8 @@ export class CreateConsultaComponent implements OnInit {
       console.log(pet);
 
 
-      let tipoProcedimento = 1;
-      let procedimentoId = 0;
+      let tipoProcedimento = 0;
+      let procedimentoId = 4;
       let data: Date = this.form.controls['data'].value.toDate();
       let hora: string[] = this.form.controls['hora'].value.split(":");
       console.log(data);
@@ -142,10 +140,6 @@ export class CreateConsultaComponent implements OnInit {
       data.setHours(Number.parseInt(hora[0]));
       data.setMinutes(Number.parseInt(hora[1]));
 
-      let sintomas = this.form.controls['sintomas'].value;
-
-
-
 
       let proced: IProced = {
         date: data,
@@ -153,7 +147,6 @@ export class CreateConsultaComponent implements OnInit {
         veterinario: vet,
         procedimentoId: procedimentoId,
         tipoProcedimento: tipoProcedimento,
-        sintomas: sintomas
       };
 
 
@@ -179,11 +172,7 @@ export class CreateConsultaComponent implements OnInit {
           });
         }
       );
-    }else{
-      //console.log( environment.whatsapp+`Ol%C3%A1%2C%20${this.user.name}%20aqui%2C%20gostaria%20de%20marcar%20uma%20consulta%20com%20a%20especialidade%20${this.form.controls['especialidade'].value}`);
-      
-      window.location.href = environment.whatsapp+`Ol%C3%A1%2C%20${this.user.name}%20aqui%2C%20gostaria%20de%20marcar%20uma%20consulta%20com%20a%20especialidade%20${this.form.controls['especialidade'].value}%20para%20o%20meu%20pet%20${this.form.controls['pet'].value.name}%2C%20${'da%20especie%20'+((this.form.controls['pet'].value.tipo=='Canino')?'canina':'felina')}.`;
-    }
+   
 
   }
 

@@ -41,7 +41,7 @@ export class MarcacaoAdmComponent implements OnInit {
     this.loaded2 = false
     console.log(this.userId)
     if(!(this.userId===undefined)){
-      this.petService.getByOwner(this.userId).subscribe(
+      this.petService.getByOwner(this.userId.id).subscribe(
         (data)=>{
           this.pets=data
           this.loaded2=true

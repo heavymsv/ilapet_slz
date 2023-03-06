@@ -1,0 +1,78 @@
+<div style="display: flex;align-items: center;justify-content: center;">
+    <div class="tela-cadastro">
+
+        <form class="form" [formGroup]="form" (ngSubmit)="submit()">
+
+            <div class="select-form-format">
+                <div class="select-outline">
+                    <div class="icon-spacing">
+                        <mat-icon>medical_services</mat-icon>
+                    </div>
+                    <mat-form-field appearance="fill" class="select-pet-form">
+                        <mat-label>Veterinário</mat-label>
+                        <mat-select name="vet" [value]="nameMedico" formControlName="vet" (selectionChange)="selectVet()" class="select-pet-form">
+                            <mat-option [value]="undefined">Novo</mat-option>
+                            <mat-option *ngFor="let vet of vets" [value]="vet">{{
+                                vet.name
+                                }}</mat-option>
+                            <mat-error *ngIf="form.controls['vet'].errors?.['required']">
+                                Você deve selecionar algo.
+                            </mat-error>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <mat-form-field appearance="fill" *ngIf="nameMedico!=undefined||nameMedico===undefined">
+                <mat-label>Nome</mat-label>
+                <input matInput formControlName="name" [value]="nameG">
+            </mat-form-field>
+
+            <div class="select-form-format">
+
+                <p class="titulo-base">Especialidades</p>
+                <div class="week-days-proceds">
+                    <mat-checkbox value="1" name="weekdays1" [checked]="checkEspec[0]" (change)="specs(1,$event)">Consulta</mat-checkbox>
+                    <mat-checkbox value="2" name="weekdays2" [checked]="checkEspec[1]" (change)="specs(2,$event)">Exames</mat-checkbox>
+                    <mat-checkbox value="3" name="weekdays3" [checked]="checkEspec[2]" (change)="specs(3,$event)">Vacinas</mat-checkbox>
+                    <mat-checkbox value="4" name="weekdays4" [checked]="checkEspec[3]" (change)="specs(4,$event)"><p style="width: 100px;margin-bottom: 0px;">Banho e Tosa</p></mat-checkbox>
+                </div>
+
+                <p class="titulo-base">Dias da semana</p>
+                <div class="week-days">
+                    <mat-checkbox *ngFor="let day of days" [value]="''+day" [name]="'weekday'+weekdays[day]" [checked]="weekdayChecked[days.indexOf(day)]"
+                        (change)="printar(day,$event)">{{weekdays[day]}}</mat-checkbox>
+                </div>
+
+                <p class="titulo-base">Horas de atendimento</p>
+                <div class="week-days-hours">
+                    <div class="select-hours" *ngFor="let day of days">{{weekdays[day]}}<mat-checkbox
+                            *ngFor="let hour of hours" [value]="''+hour" [name]="weekdays[day]+hour" [checked]="checkHours[day][hours.indexOf(hour)]"
+                            [disabled]="!weekdayChecked[day]">{{hour}}</mat-checkbox></div>
+                </div>
+
+            </div>
+
+
+
+            <div style="display: flex;width: 100%;justify-content: center;">
+                <button [disabled]="form.invalid" id="loginButton" class="button-agendar"
+                    [ngStyle]="{ backgroundColor:  'var(--primary-pet-color)', color: 'whitesmoke'}">
+
+                    <mat-spinner
+                        [ngStyle]="{ display: isLoading ? 'flex' : 'none', justifyContent: isLoading ? 'center' : 'none'}"
+                        [diameter]="30" style="margin-right: 5%;width: 95%;">
+
+                    </mat-spinner>
+                    <p class="text-aligner"
+                        [ngStyle]="{ display: isLoading ? 'none'  : 'flex',justifyContent: isLoading ? 'none'  : 'center'}" [innerText]="(nameMedico===undefined)?'Registrar':'Salvar Alterações'">
+                    </p>
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>

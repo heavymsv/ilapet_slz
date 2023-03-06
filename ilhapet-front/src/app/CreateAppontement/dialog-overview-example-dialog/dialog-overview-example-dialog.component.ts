@@ -50,7 +50,8 @@ export class DialogOverviewExampleDialogComponent {
   extrairParagrafos(comp:IProced):TextoCartao[]{
 
     let retorno:TextoCartao[]=[]
-    retorno.push({titulo: "Procedimento: ",dados: (comp.procedimentoId==0)?"Consulta":(comp.procedimentoId==1)?"Exame":"Vacina"})
+    
+    retorno.push({titulo: "Procedimento: ",dados: (comp.procedimentoId==0)?"Consulta":(comp.procedimentoId==1)?"Exame":(comp.procedimentoId==2)?"Vacina":"Banho e Tosa"})
     retorno.push({titulo:"Pet: ",dados:comp.pet.name})
     retorno.push({titulo:"Veterinario: ",dados:comp.veterinario.name})
     if(comp.procedimentoId==1){

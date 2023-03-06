@@ -23,6 +23,20 @@ public class VeterinarioController {
         return ResponseEntity.status(HttpStatus.CREATED).body(veterinarioServices.post(veterinario));
     }
 
+    @PostMapping("/weekdays/{veterinarioId}")
+    ResponseEntity<Veterinario> postWeekdays(@RequestBody List<Integer> weekdays,
+                                             @PathVariable("veterinarioId") Long veterinarioId)
+    {
+        return ResponseEntity.status(HttpStatus.OK).body(veterinarioServices.postWeekdays(veterinarioId, weekdays));
+    }
+
+    @PostMapping("/hours/{veterinarioId}")
+    ResponseEntity<Veterinario> postHours(@RequestBody List<List<String>> hours,
+                                             @PathVariable("veterinarioId") Long veterinarioId)
+    {
+        return ResponseEntity.status(HttpStatus.OK).body(veterinarioServices.postHours(veterinarioId, hours));
+    }
+
     @GetMapping("/pages")
     ResponseEntity<Page<Veterinario>> getAllPaginated(Pageable pageable){
         return ResponseEntity.status(HttpStatus.OK).body(veterinarioServices.get(pageable));
@@ -54,5 +68,6 @@ public class VeterinarioController {
         veterinarioServices.delete(veterinarioId);
         return ResponseEntity.noContent().build();
     }
+
 
 }

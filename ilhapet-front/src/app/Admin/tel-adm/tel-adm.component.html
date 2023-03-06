@@ -1,8 +1,12 @@
 <app-header class="header"></app-header>
 <mat-tab-group>
-    <mat-tab label="Consultas, Exames e Vacinas">
+
+    <mat-tab label="Gerenciar Veterinários"><app-gerencia-vet [vets]="vets"></app-gerencia-vet></mat-tab>
+
+    <mat-tab label="Agenda">
         <app-historico-con-vac-exa></app-historico-con-vac-exa>
     </mat-tab>
-    <mat-tab label="Marcações"><app-marcacao-adm [users]="users"></app-marcacao-adm></mat-tab>
+    <mat-tab label="Agendamento"><app-marcacao-adm [users]="users"></app-marcacao-adm></mat-tab>
+    
 </mat-tab-group>
 <app-footer-client [num]="2"></app-footer-client>

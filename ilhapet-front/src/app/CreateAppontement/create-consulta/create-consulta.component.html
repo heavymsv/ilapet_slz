@@ -2,16 +2,41 @@
     <div class="tela-cadastro">
 
         <form class="form" [formGroup]="form" (ngSubmit)="submit()">
-    
+
             <div class="select-form-format">
                 <div class="select-outline">
                     <div class="icon-spacing">
                         <mat-icon>medical_services</mat-icon>
                     </div>
                     <mat-form-field appearance="fill" class="select-pet-form">
+                        <mat-label>Especialidade</mat-label>
+                        <mat-select name="especialidade" formControlName="especialidade" class="select-pet-form">
+                            <mat-option value="clinica">Clinica Geral</mat-option>
+                            <mat-option value="dermatologista">Dermatologista</mat-option>
+                            <mat-option value="odontologista">Odontologista</mat-option>
+                            <mat-option value="ortopedista">Ortopedista</mat-option>
+                            <mat-option value="endocrinologista">Endocrinologia</mat-option>
+                            <mat-option value="oftamologista">Oftalmologista</mat-option>
+                            <mat-option value="neurologista">Neurologista</mat-option>
+                            <mat-option value="oncologista">Oncologista</mat-option>
+                            <mat-option value="nutricionista">Nutricionista</mat-option>
+                            <mat-option value="cardiologista">Cardiologista</mat-option>
+                            <mat-option value="gastroenterologista">Gastroenterologista</mat-option>
+                            <mat-error *ngIf="form.controls['especialidade'].errors?.['required']">Você deve selecionar algo.</mat-error>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+    
+            <div class="select-form-format" *ngIf="form.controls['especialidade'].value=='clinica'">
+                <div class="select-outline">
+                    <div class="icon-spacing">
+                        <mat-icon>medical_services</mat-icon>
+                    </div>
+                    <mat-form-field appearance="fill" class="select-pet-form">
                         <mat-label>Veterinário</mat-label>
-                        <mat-select name="vet" formControlName="vet" class="select-pet-form">
-                            <mat-option *ngFor="let vet of veterinarios" [value]="vet">{{
+                        <mat-select name="vet" formControlName="vet" (selectionChange)="selectVet()" class="select-pet-form">
+                            <mat-option *ngFor="let vet of veterinariosCorreto" [value]="vet">{{
                                 vet.name
                             }}</mat-option>
                             <mat-error *ngIf="form.controls['vet'].errors?.['required']">Você deve selecionar algo.</mat-error>
@@ -43,8 +68,8 @@
                         <span class="material-symbols-outlined">&#xF805;</span>
                     </div>
                     <mat-form-field class="Sintomas">
-                        <mat-label>Sintomas</mat-label>
-                        <textarea matInput cols="30" rows="2" name="sintomas" formControlName="sintomas" placeholder="Descreva brevemente os sintomas"></textarea>
+                        <mat-label>Principal Queixa</mat-label>
+                        <textarea matInput cols="30" rows="2" name="sintomas" formControlName="sintomas" placeholder="Descreva brevemente a(s) principal(is) queixa(s)"></textarea>
                     </mat-form-field>
                     <!--<input type="text" [(ngModel)]="sintomas" id="" class="sintomas-field">-->
     
@@ -52,18 +77,18 @@
             </div>
             <!--<p>{{sintomas}}</p>-->
             
-            <div class="select-form-format">
+            <div class="select-form-format" *ngIf="form.controls['especialidade'].value=='clinica'">
                 <div class="select-outline">
                     <mat-form-field class="example-full-width" appearance="fill">
                         <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
                         <mat-datepicker touchUi #picker></mat-datepicker>
                         <mat-label>Dia</mat-label>
-                        <input matInput [matDatepickerFilter]="myFilter" name="data" formControlName="data" [matDatepicker]="picker" readonly="true">
+                        <input matInput [matDatepickerFilter]="myFilter" (dateChange)="diaSelec($event)" name="data" formControlName="data" [matDatepicker]="picker" readonly="true">
                     </mat-form-field>
                 </div>
             </div>
     
-            <div class="select-form-format">
+            <div class="select-form-format" *ngIf="form.controls['especialidade'].value=='clinica'">
                 <div class="select-outline">
                     <div class="icon-spacing">
                         <mat-icon>schedule</mat-icon>
@@ -71,16 +96,17 @@
                     <mat-form-field appearance="fill" class="select-pet-form">
                         <mat-label>Horário</mat-label>
                         <mat-select class="select-pet-form" name="hora" formControlName="hora">
-                            <mat-option value="8:00">8:00</mat-option>
-                            <mat-option value="18:00">18:00</mat-option>
+                            <mat-option *ngFor="let hour of hours" [value]="hour">{{hour}}</mat-option>
                             <mat-error *ngIf="form.controls['hora'].errors?.['required']">Você deve selecionar algo.</mat-error>
                         </mat-select>
                     </mat-form-field>
                 </div>
             </div>
+
+            
     
             <div style="display: flex;width: 100%;justify-content: center;">
-                <button [disabled]="form.invalid" id="loginButton" class="button-agendar"  [ngStyle]="{ backgroundColor: form.invalid ? 'whitesmoke' : 'var(--primary-pet-color)', color: form.invalid ? '' : 'whitesmoke'}">
+                <button [disabled]="form.invalid&&(form.controls['especialidade'].value=='clinica')" id="loginButton" class="button-agendar"  [ngStyle]="{ backgroundColor: (form.invalid&&(form.controls['especialidade'].value=='clinica'))? 'whitesmoke' : 'var(--primary-pet-color)', color: (form.invalid&&(form.controls['especialidade'].value=='clinica')) ? '' : 'whitesmoke'}">
         
                     <mat-spinner [ngStyle]="{ display: isLoading ? 'flex' : 'none', justifyContent: isLoading ? 'center' : 'none'}"
                         [diameter]="30" style="margin-right: 5%;width: 95%;">

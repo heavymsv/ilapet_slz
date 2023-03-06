@@ -14,6 +14,7 @@
                         <mat-option value="1">Consulta</mat-option>
                         <mat-option value="2">Exame</mat-option>
                         <mat-option value="3">Vacina</mat-option>
+                        <mat-option value="4">Banho e Tosa</mat-option>
                     </mat-select>
                 </mat-form-field>
             </div>
@@ -29,18 +30,20 @@
                     <mat-label>Cliente</mat-label>
                     <mat-select (selectionChange)="pessoaDiferente()" [(value)]="userId" class="select-pet-form">
                         <mat-option>None</mat-option>
-                        <mat-option *ngFor="let user of users" [value]="user.id">{{user.name}}</mat-option>
+                        <mat-option *ngFor="let user of users" [value]="user">{{user.name}}</mat-option>
                     </mat-select>
                 </mat-form-field>
             </div>
         </div>
 
-        <app-create-consulta *ngIf="(selected=='1')&&loaded&&loaded2" [pets]="pets"
+        <app-create-consulta *ngIf="(selected=='1')&&loaded&&loaded2" [user]='userId' [pets]="pets"
             [veterinarios]="vets"></app-create-consulta>
         <app-create-exame *ngIf="(selected=='2')&&loaded&&loaded2" [pets]="pets"
             [veterinarios]="vets"></app-create-exame>
         <app-create-vacina *ngIf="(selected=='3')&&loaded&&loaded2" [pets]="pets"
             [veterinarios]="vets"></app-create-vacina>
+        <app-create-tosa *ngIf="(selected=='4')&&loaded&&loaded2" [pets]="pets"
+            [veterinarios]="vets"></app-create-tosa>
 
     </div>
 </div>

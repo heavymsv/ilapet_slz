@@ -1,9 +1,10 @@
 <app-header class="header"></app-header>
 <mat-tab-group *ngIf="user&&loaded&&loaded2" style="overflow-y:hidden;height:fit-content">
     <mat-tab label="Principal"> <app-geral-cliente [user]="user" [vacinas]="vacinas" [exames]="exames"></app-geral-cliente> </mat-tab>
-    <mat-tab label="Consulta" > <app-create-consulta [pets]="pets" [veterinarios]="vets"></app-create-consulta> </mat-tab>
+    <mat-tab label="Consulta" > <app-create-consulta [user]="user" [pets]="pets" [veterinarios]="vets"></app-create-consulta> </mat-tab>
     <mat-tab label="Exame"> <app-create-exame [pets]="pets" [veterinarios]="vets"></app-create-exame> </mat-tab>
     <mat-tab label="Vacinação"> <app-create-vacina [pets]="pets" [veterinarios]="vets"></app-create-vacina> </mat-tab>
+    <mat-tab label="Banho e Tosa" > <app-create-tosa [user]="user" [pets]="pets" [veterinarios]="vets"></app-create-tosa> </mat-tab>
     <mat-tab  label="Pets"> <app-gerenciar-pets [user]="user" [pets]="pets" ></app-gerenciar-pets> </mat-tab>
 </mat-tab-group>
 <app-footer-client [num]="2"></app-footer-client>

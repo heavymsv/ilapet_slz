@@ -5,6 +5,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Map;
 
 @Entity
 @AllArgsConstructor
@@ -17,4 +19,14 @@ public class Veterinario {
 
     @Column(unique = true)
     private String name;
+
+    private ArrayList<Integer> days;
+
+    @Column(length = 5000)
+    private ArrayList<ArrayList<String>> hours;
+
+    private ArrayList<Integer> especs;
+    public Veterinario(String name) {
+        this.name = name;
+    }
 }
