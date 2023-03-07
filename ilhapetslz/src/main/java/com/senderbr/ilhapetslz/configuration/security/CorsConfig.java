@@ -26,8 +26,8 @@ public class CorsConfig {
         if (Arrays.asList(env.getActiveProfiles()).contains("test")){
             url = "http://localhost:4200";
         }else if (Arrays.asList(env.getActiveProfiles()).contains("dev")) {
-            //url = "http://18.188.133.236";
-            url = "http://localhost:4200";
+            url = "http://18.188.133.236";
+            //url = "http://localhost:4200";
         }else if (Arrays.asList(env.getActiveProfiles()).contains("prod")) {
             url = uri;
         }
