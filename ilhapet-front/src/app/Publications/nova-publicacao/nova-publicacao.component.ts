@@ -42,7 +42,7 @@ export class NovaPublicacaoComponent {
 
       this.formData.append("file", file);
 
-      console.log(this.formData);
+      //console.log(this.formData);
 
       //const upload$ = this.http.post("/api/thumbnail-upload", formData);
 
@@ -70,7 +70,7 @@ export class NovaPublicacaoComponent {
     );
     this.isLoading = true
     upload$.subscribe((data) => {
-      console.log(data);
+      //console.log(data);
 
       this.blog.imagem = data.nome
       this.blog.titulo = this.titulo
@@ -78,7 +78,7 @@ export class NovaPublicacaoComponent {
 
       if (data.type == HttpEventType.UploadProgress) {
         this.uploadProgress = Math.round(100 * (data.loaded / data.total));
-        console.log(this.uploadProgress)
+        //console.log(this.uploadProgress)
       }
 
 

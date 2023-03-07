@@ -9,6 +9,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.EntityExistsException;
 import javax.persistence.EntityNotFoundException;
 import java.util.List;
 import java.util.Optional;
@@ -20,7 +21,15 @@ public class ProcedimentosServices {
     ProcedimentosRepository repository;
 
     @Transactional
-    public Procedimentos post(Procedimentos procedimentos){return repository.save(procedimentos);}
+    public Procedimentos post(Procedimentos procedimentos){
+        if(
+                (repository.findByProcedimentoIdAndDateAndVeterinario(
+                        procedimentos.getProcedimentoId(),
+                        procedimentos.getDate(),
+                        procedimentos.getVeterinario())).size()>0
+        ) throw new EntityExistsException("Ja existe um apontamento com esse horário, favor escolher outro horário!!");
+        return repository.save(procedimentos);
+    }
 
     public Page<Procedimentos> getPendentes(Pageable pageable){return repository.findByPendenteFalseOrderByDate(pageable);}
 

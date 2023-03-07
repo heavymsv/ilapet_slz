@@ -37,9 +37,9 @@ export class MarcacaoAdmComponent implements OnInit {
 
 
   pessoaDiferente(){
-    console.log("users:",this.users)
+    //console.log("users:",this.users)
     this.loaded2 = false
-    console.log(this.userId)
+    //console.log(this.userId)
     if(!(this.userId===undefined)){
       this.petService.getByOwner(this.userId.id).subscribe(
         (data)=>{

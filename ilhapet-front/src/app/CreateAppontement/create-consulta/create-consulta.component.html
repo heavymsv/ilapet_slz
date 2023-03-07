@@ -12,16 +12,16 @@
                         <mat-label>Especialidade</mat-label>
                         <mat-select name="especialidade" formControlName="especialidade" class="select-pet-form">
                             <mat-option value="clinica">Clinica Geral</mat-option>
-                            <mat-option value="dermatologista">Dermatologista</mat-option>
-                            <mat-option value="odontologista">Odontologista</mat-option>
-                            <mat-option value="ortopedista">Ortopedista</mat-option>
-                            <mat-option value="endocrinologista">Endocrinologia</mat-option>
-                            <mat-option value="oftamologista">Oftalmologista</mat-option>
-                            <mat-option value="neurologista">Neurologista</mat-option>
-                            <mat-option value="oncologista">Oncologista</mat-option>
-                            <mat-option value="nutricionista">Nutricionista</mat-option>
-                            <mat-option value="cardiologista">Cardiologista</mat-option>
-                            <mat-option value="gastroenterologista">Gastroenterologista</mat-option>
+                            <mat-option *ngIf="!adminQM" value="dermatologista">Dermatologista</mat-option>
+                            <mat-option *ngIf="!adminQM" value="odontologista">Odontologista</mat-option>
+                            <mat-option *ngIf="!adminQM" value="ortopedista">Ortopedista</mat-option>
+                            <mat-option *ngIf="!adminQM" value="endocrinologista">Endocrinologia</mat-option>
+                            <mat-option *ngIf="!adminQM" value="oftamologista">Oftalmologista</mat-option>
+                            <mat-option *ngIf="!adminQM" value="neurologista">Neurologista</mat-option>
+                            <mat-option *ngIf="!adminQM" value="oncologista">Oncologista</mat-option>
+                            <mat-option *ngIf="!adminQM" value="nutricionista">Nutricionista</mat-option>
+                            <mat-option *ngIf="!adminQM" value="cardiologista">Cardiologista</mat-option>
+                            <mat-option *ngIf="!adminQM" value="gastroenterologista">Gastroenterologista</mat-option>
                             <mat-error *ngIf="form.controls['especialidade'].errors?.['required']">Você deve selecionar algo.</mat-error>
                         </mat-select>
                     </mat-form-field>

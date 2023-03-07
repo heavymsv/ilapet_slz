@@ -111,7 +111,7 @@ export class CreateVacinaComponent implements OnInit {
     if(d===undefined) return false
     const day = d.weekday();
     // Prevent Saturday and Sunday from being selected.
-    //console.log(day)
+    ////console.log(day)
     return this.filterDays.includes(day);
   };
   
@@ -127,7 +127,7 @@ export class CreateVacinaComponent implements OnInit {
 
   gerarDoses(){
     this.doses=[]
-    console.log(this.form.controls['vacina'].value);
+    //console.log(this.form.controls['vacina'].value);
 
     let limite = this.form.controls['vacina'].value.doses
     for(let i=1;i<=limite;i++){
@@ -139,8 +139,8 @@ export class CreateVacinaComponent implements OnInit {
 
     //this.form.controls['vacina'].setValue(null)
     this.vacinasASelecionar = this.vacinas.filter((vacina:IVacina)=>{
-      console.log('tipo: ',vacina.tipo);
-      console.log('tipo A Selec: ',this.form.controls['pet'].value.tipo);
+      //console.log('tipo: ',vacina.tipo);
+      //console.log('tipo A Selec: ',this.form.controls['pet'].value.tipo);
       
       return vacina.tipo == this.form.controls['pet'].value.tipo
     })
@@ -158,19 +158,19 @@ export class CreateVacinaComponent implements OnInit {
     let procedimentoId = 2;
     let data:Date = this.form.controls['data'].value.toDate();
     let hora:string[] = this.form.controls['hora'].value.split(":");
-    console.log(data);
+    //console.log(data);
 
-    console.log('hours: ', hora);
+    //console.log('hours: ', hora);
 
     data.setHours(Number.parseInt(hora[0]));
     data.setMinutes(Number.parseInt(hora[1]));
     
     let dose = this.form.controls['dose'].value + "º dose";
 
-    console.log('vet: ',vet);
-    console.log('pet: ',pet);
-    console.log('dose: ', dose);
-    console.log('timestamp: ', data);
+    //console.log('vet: ',vet);
+    //console.log('pet: ',pet);
+    //console.log('dose: ', dose);
+    //console.log('timestamp: ', data);
 
     let proced:IProced = {date: data,
                           pet: pet,
@@ -179,7 +179,7 @@ export class CreateVacinaComponent implements OnInit {
                           tipoProcedimento: tipoProcedimento,
                           sintomas: dose};
     
-    console.log("proced: ",proced)
+    //console.log("proced: ",proced)
   
   
     this.procedService.create(proced).subscribe(

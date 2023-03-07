@@ -61,7 +61,7 @@ export class EsqueciSenhaComponent {
       },
       (error) => {
         this.isLoading = false
-        console.log(error);
+        //console.log(error);
         
         this.notificationService.error('E-mail não registrado!!', 'Error!', {
           progressBar: true,

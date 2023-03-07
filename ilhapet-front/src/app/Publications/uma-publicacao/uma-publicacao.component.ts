@@ -20,12 +20,12 @@ export class UmaPublicacaoComponent implements OnInit {
   }
   ngOnInit(): void {
     this.blogService.getById(Number.parseInt(this.route.snapshot.paramMap.get('publicacao'))).subscribe((data)=>{
-      console.log(data);
+      //console.log(data);
       
       this.blog = data
       this.isLoaded = true
 
-      console.log(this.blog.texto.normalize())
+      //console.log(this.blog.texto.normalize())
     })
 
     

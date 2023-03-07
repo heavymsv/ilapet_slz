@@ -62,7 +62,7 @@ export class DialogOverviewExampleDialogComponent {
       retorno.push({titulo:"Dose: ",dados:comp.sintomas})
   
     }
-    console.log(new Date(comp.date).toLocaleString())
+    //console.log(new Date(comp.date).toLocaleString())
     retorno.push({titulo:"Hora: ",dados:new Date(comp.date.toString()+'Z').toLocaleTimeString('pt-br',{timeZone:'America/Sao_Paulo'})})
     return retorno;
 

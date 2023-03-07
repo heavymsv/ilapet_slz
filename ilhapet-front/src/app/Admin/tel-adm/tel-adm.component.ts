@@ -22,19 +22,19 @@ export class TelAdmComponent implements OnInit {
 
   ngOnInit(): void {
     this.userService.get().subscribe((data)=>{
-      console.log('users: ',data);
+      //console.log('users: ',data);
       
       this.users = data.filter((user:IUser)=>{return user.accessLevel.authority=='ROLE_CLIENT'});
     })
     this.vetService.get().subscribe((data)=>{
-      console.log('vets: ',data)
+      //console.log('vets: ',data)
 
       this.vets = data;
     })
   }
 
   printar(weekday:string){
-    console.log(weekday);
+    //console.log(weekday);
     
   }
   

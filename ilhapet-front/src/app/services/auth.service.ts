@@ -13,7 +13,7 @@ export class AuthService {
   constructor() { }
 
   public getToken(): string | null {
-    //console.log(localStorage.getItem("T-WMS_token"));
+    ////console.log(localStorage.getItem("T-WMS_token"));
     
     return localStorage.getItem("T-WMS_token")
   }
@@ -33,7 +33,7 @@ export class AuthService {
     if (token) {
       
       let decoded: ITokenPayload = this.jwtHelper.decodeToken(token)
-      console.log("decoded:",decoded);
+      //console.log("decoded:",decoded);
       return decoded.user_name
     }
     return ""

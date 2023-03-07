@@ -16,7 +16,7 @@ constructor(
 ){}
 
   deletaPub(){
-    console.log(this.id);
+    //console.log(this.id);
     
     this.pubService.delete(this.id).subscribe(()=>{
       window.location.reload()

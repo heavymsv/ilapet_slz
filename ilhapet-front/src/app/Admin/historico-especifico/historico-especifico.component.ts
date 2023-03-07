@@ -36,19 +36,19 @@ export class HistoricoEspecificoComponent implements OnInit {
   ngOnInit(): void {
     
     this.procedimentoService.getById(Number.parseInt(this.route.snapshot.paramMap.get('compromisso'))).subscribe((data)=>{
-      console.log("data: ",data);
+      //console.log("data: ",data);
       this.compromisso = data
       this.habilitado = this.compromisso.pendente
       this.loaded3 = true
       this.date = new Date(this.compromisso.date.toString()+'Z').toLocaleString('pt-br',{timeZone:'America/Sao_Paulo'})
     });
     this.exameService.get().subscribe((data)=>{
-      console.log(data);
+      //console.log(data);
       this.exames = data
       this.loaded2 = true
     })
     this.vacinaService.get().subscribe((data)=>{
-      console.log(data);
+      //console.log(data);
       this.vacinas = data
       this.loaded = true
     })
@@ -83,7 +83,7 @@ export class HistoricoEspecificoComponent implements OnInit {
   }
 
   darBaixa(){
-    console.log(this.compromisso)
+    //console.log(this.compromisso)
     let pet:IPet={id:this.compromisso.pet.id}
     let vet:IVets={id:this.compromisso.veterinario.id,name:this.compromisso.veterinario.name}
 
@@ -102,10 +102,10 @@ export class HistoricoEspecificoComponent implements OnInit {
     this.compromisso.pendente = true
 
     this.habilitado = true
-    console.log(this.habilitado)
+    //console.log(this.habilitado)
     this.procedimentoService.update(this.compromisso.id,compromissoNovo).subscribe(
     (data)=>{
-      console.log("tudo ok:",data)
+      //console.log("tudo ok:",data)
     }
 
     )

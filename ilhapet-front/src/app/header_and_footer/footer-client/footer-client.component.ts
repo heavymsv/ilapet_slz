@@ -36,7 +36,7 @@ export class FooterClientComponent {
     const dialogRef = this.dialog.open(DialogAnimationsExampleDialog, dialogConfig);
 
     dialogRef.afterClosed().subscribe((result) => {
-      console.log(`Dialog result: ${result}`);
+      //console.log(`Dialog result: ${result}`);
     })
   }
 

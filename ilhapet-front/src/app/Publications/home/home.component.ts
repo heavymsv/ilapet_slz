@@ -32,7 +32,7 @@ export class HomeComponent implements OnInit {
       
       for (const element of data) {
         this.imgs.push("assets/uped_imgs/"+element.imagem)
-        console.log(element.imagem)
+        //console.log(element.imagem)
       }
 
     })
@@ -46,7 +46,7 @@ export class HomeComponent implements OnInit {
 
   verificaNivel():boolean{
     let key = localStorage.getItem('T-WMS_token')
-    //console.log((key==undefined)?false:(this.authService.validateRole(['ROLE_ADMIN'])));
+    ////console.log((key==undefined)?false:(this.authService.validateRole(['ROLE_ADMIN'])));
     
     return (key==undefined)?false:(this.authService.validateRole(['ROLE_ADMIN']))
   }
@@ -54,7 +54,7 @@ export class HomeComponent implements OnInit {
   countSlide(event:NgbSlideEvent){
     
     this.slide = (Number.parseInt(event.current))
-    console.log(this.slide)
+    //console.log(this.slide)
   }
 
 }

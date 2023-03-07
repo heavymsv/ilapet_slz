@@ -34,11 +34,11 @@ export class GeralClienteComponent implements OnInit {
   loading:boolean=false
 
   ngOnInit(): void {
-    console.log(this.user);
+    //console.log(this.user);
     this.procedimentosService.getAll(this.user.id).subscribe((data) => {
-      console.log(data);
+      //console.log(data);
       this.procedimentos = data
-      console.log(data);
+      //console.log(data);
       this.loading=true
 
     }
@@ -77,7 +77,7 @@ export class GeralClienteComponent implements OnInit {
         &&(dataA.getFullYear()==date.getFullYear());
       }
       )
-      console.log('correto: ',filtered.length>0? 'highlight-dates' : 'deityis');
+      //console.log('correto: ',filtered.length>0? 'highlight-dates' : 'deityis');
       
       // Highlight saturday and sunday.
       return filtered.length>0? 'example-custom-date-class' : '';
@@ -96,7 +96,7 @@ export class GeralClienteComponent implements OnInit {
       &&(dataA.getFullYear()==date.getFullYear());
     }
     )
-    console.log(filtered);
+    //console.log(filtered);
     if(filtered.length>0){
        
 

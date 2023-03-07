@@ -36,7 +36,7 @@
             </div>
         </div>
 
-        <app-create-consulta *ngIf="(selected=='1')&&loaded&&loaded2" [user]='userId' [pets]="pets"
+        <app-create-consulta *ngIf="(selected=='1')&&loaded&&loaded2" [user]='userId' [adminQM]='true' [pets]="pets"
             [veterinarios]="vets"></app-create-consulta>
         <app-create-exame *ngIf="(selected=='2')&&loaded&&loaded2" [pets]="pets"
             [veterinarios]="vets"></app-create-exame>

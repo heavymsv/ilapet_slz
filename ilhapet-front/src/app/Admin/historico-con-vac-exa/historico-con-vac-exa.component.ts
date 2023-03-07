@@ -50,26 +50,26 @@ export class HistoricoConVacExaComponent implements OnInit {
   }
   ngOnInit(): void {
     /*this.procedimentoService.getQualifiying(true).subscribe((data)=>{
-      console.log("data: ",data);      
+      //console.log("data: ",data);      
       this.compromissos = data.content
       this.pageSize = data.pageable.pageSize
       this.length = data.totalElements
       this.pageIndex = data.number
     });*/
     this.procedimentoService.getListAdmin(this.metodoPesquisaDeFato,this.elementoPesquisaDeFato,this.pendenteDeFato).subscribe((data)=>{
-      console.log("data: ",data);      
+      //console.log("data: ",data);      
       this.compromissos = data.content
       this.pageSize = data.pageable.pageSize
       this.length = data.totalElements
       this.pageIndex = data.number
     });
     this.exameService.get().subscribe((data)=>{
-      console.log(data);
+      //console.log(data);
       this.exames = data
       this.loaded2 = true
     })
     this.vacinaService.get().subscribe((data)=>{
-      console.log(data);
+      //console.log(data);
       this.vacinas = data
       this.loaded = true
     })
@@ -118,14 +118,16 @@ export class HistoricoConVacExaComponent implements OnInit {
   }
 
   verificaCompromisso(num:number):string{
-    return num==0?'Consulta':(num==1?'Exame':'Vacina')
+    return num==0?'Consulta':(num==1?'Exame':num==2?'Vacina':'Banho e Tosa')
   }
 
   extrairInformacao(compromisso:IProced):string[]{
     let volta:string[] = []
     volta.push("Responsável: " + compromisso.pet.user.name )
     volta.push("Pet: " + compromisso.pet.name + ` (${compromisso.pet.tipo})` )
-    volta.push("Veterinário: " + compromisso.veterinario.name )
+    volta.push(((compromisso.procedimentoId==4)?"Profissional: ":"Veterinário: ") + compromisso.veterinario.name )
+
+    //console.log(compromisso);
 
     if(compromisso.procedimentoId==0){
       volta.push("Sintomas: " + compromisso.sintomas )

@@ -21,7 +21,7 @@ export class ProcedimentoService {
   }
 
   getAll(id: number){
-    console.log('place: ',`${environment.apiUrl}/procedimento/listall?id=${id}`);
+    //console.log('place: ',`${environment.apiUrl}/procedimento/listall?id=${id}`);
     
     return this.http.get<IProced[]>(`${environment.apiUrl}/procedimento/listall?id=${id}`, {
       headers: this.auth.buildHeader(),
@@ -29,8 +29,8 @@ export class ProcedimentoService {
   }
 
   getQualifiying(pendente:boolean|null,page?:number){
-    console.log( (page===undefined)?'':`&page=${page}`)
-    console.log(`site: ${environment.apiUrl}/procedimento/pages?pendente=${pendente}${(page===undefined)?'':`&page=${page}`}`);
+    //console.log( (page===undefined)?'':`&page=${page}`)
+    //console.log(`site: ${environment.apiUrl}/procedimento/pages?pendente=${pendente}${(page===undefined)?'':`&page=${page}`}`);
     
     return this.http.get<any>(`${environment.apiUrl}/procedimento/pages?pendente=${pendente}${(page===undefined)?'':`&page=${page}`}`, {
       headers: this.auth.buildHeader(),

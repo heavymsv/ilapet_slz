@@ -46,7 +46,7 @@ export class GerenciaVetComponent implements OnInit {
 
   submit() {
 
-    console.log(this.nameG);
+    //console.log(this.nameG);
 
     let nameL = this.form.controls['name'].value;
 
@@ -58,10 +58,10 @@ export class GerenciaVetComponent implements OnInit {
 
     let j=0;
 
-    console.log("dias: " + this.weekdayChecked)
+    //console.log("dias: " + this.weekdayChecked)
 
     for(let i=0;i<7;i++){
-      console.log("log " + this.weekdays[i] + " : " + this.weekdayChecked[i]);
+      //console.log("log " + this.weekdays[i] + " : " + this.weekdayChecked[i]);
       if(this.weekdayChecked[i]){
         daysL.push(i)
         let k = 0;
@@ -90,20 +90,20 @@ export class GerenciaVetComponent implements OnInit {
       hours:hoursL
     }
 
-    console.log(this.nameMedico);
+    //console.log(this.nameMedico);
 
-    console.log(vet);
+    //console.log(vet);
     
 
     if(this.nameMedico===undefined){
       this.vetService.create(vet).subscribe((response)=>{
-        console.log(response)
+        //console.log(response)
         window.location.reload()
       })
     }else{
       vet.id = this.nameMedico.id
       this.vetService.update(vet.id,vet).subscribe((response)=>{
-        console.log(response)
+        //console.log(response)
         window.location.reload()
       })
     }
@@ -128,7 +128,7 @@ export class GerenciaVetComponent implements OnInit {
     if (d === undefined) return false
     const day = d.weekday();
     // Prevent Saturday and Sunday from being selected.
-    //console.log(day)
+    ////console.log(day)
     return day !== 0 && day !== 6;
   };
 
@@ -142,16 +142,16 @@ export class GerenciaVetComponent implements OnInit {
 
     this.form.controls['name'].setValue((this.nameMedico===undefined)?'':this.nameMedico.name)
 
-    console.log(this.nameMedico.especs);
-    console.log(this.nameMedico.days);
-    console.log(this.nameMedico.hours);
+    //console.log(this.nameMedico.especs);
+    //console.log(this.nameMedico.days);
+    //console.log(this.nameMedico.hours);
 
     this.espec = []
 
-    console.log("testando zerar")
-    console.log(this.weekdayChecked);
-    console.log(this.checkEspec);
-    console.log(this.checkHours);
+    //console.log("testando zerar")
+    //console.log(this.weekdayChecked);
+    //console.log(this.checkEspec);
+    //console.log(this.checkHours);
 
     this.weekdayChecked = this.zeroWeekdayChecked
     this.checkEspec = this.zeroCheckEspec
@@ -180,12 +180,12 @@ export class GerenciaVetComponent implements OnInit {
       if(this.nameMedico.days.indexOf(i)!=-1){
         this.weekdayChecked[i] = true
 
-        console.log("hours: ",this.nameMedico.hours[index]);
+        //console.log("hours: ",this.nameMedico.hours[index]);
 
         for(let hour in this.nameMedico.hours[index]){
-          console.log("hour: ", this.nameMedico.hours[index][hour]);
-          console.log("index: ", i);
-          console.log("index2: ", this.hours.indexOf(this.nameMedico.hours[index][hour]));
+          //console.log("hour: ", this.nameMedico.hours[index][hour]);
+          //console.log("index: ", i);
+          //console.log("index2: ", this.hours.indexOf(this.nameMedico.hours[index][hour]));
           this.checkHours[i][this.hours.indexOf(this.nameMedico.hours[index][hour])] = true;
         }
 
@@ -197,7 +197,7 @@ export class GerenciaVetComponent implements OnInit {
       }
     }
 
-    console.log(this.checkHours);
+    //console.log(this.checkHours);
     
 
   }
@@ -205,9 +205,9 @@ export class GerenciaVetComponent implements OnInit {
   printar = (day: number, $event: any) => {
 
     this.weekdayChecked[day] = $event.checked
-    console.log($event);
+    //console.log($event);
 
-    console.log(this.weekdayChecked);
+    //console.log(this.weekdayChecked);
 
 
     for(let i=0;i<7;i++){
@@ -215,7 +215,7 @@ export class GerenciaVetComponent implements OnInit {
       if(this.weekdayChecked[i]){
         for(let hour of this.hours){
           if(document.getElementsByName(this.weekdays[i]+hour)[0].ariaChecked=='true'){
-            console.log(document.getElementsByName(this.weekdays[i]+hour)[0].getAttribute('value'));
+            //console.log(document.getElementsByName(this.weekdays[i]+hour)[0].getAttribute('value'));
           }
         }
       }
@@ -225,15 +225,15 @@ export class GerenciaVetComponent implements OnInit {
   }
 
   printar2 = () => {
-    console.log(this.teste);
+    //console.log(this.teste);
   }
 
   printar3 = ($event: any) => {
-    console.log($event);
+    //console.log($event);
   }
 
   specs = (num: number, $event: any) => {
-    console.log($event.checked);
+    //console.log($event.checked);
 
     if ($event.checked) {
       this.espec.push(num - 1)
@@ -241,7 +241,7 @@ export class GerenciaVetComponent implements OnInit {
       this.espec.splice(this.espec.indexOf(num - 1), 1)
     }
 
-    console.log(this.espec);
+    //console.log(this.espec);
 
   }
 

@@ -50,7 +50,7 @@ export class GerenciarPetsComponent implements OnInit {
       tipo: this.form.controls['tipo'].value
     };
 
-    console.log("pet: ", pet)
+    //console.log("pet: ", pet)
 
 
     this.petService.create(pet).subscribe(

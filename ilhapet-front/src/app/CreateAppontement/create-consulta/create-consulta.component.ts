@@ -59,6 +59,7 @@ export class CreateConsultaComponent implements OnInit {
   @Input() veterinarios: IVets[]
   @Input() pets: IPet[]
   @Input() user: IUser
+  @Input() adminQM: boolean
 
   veterinariosCorreto:IVets[]=[]
 
@@ -105,7 +106,7 @@ export class CreateConsultaComponent implements OnInit {
     if (d === undefined) return false
     const day = d.weekday();
     // Prevent Saturday and Sunday from being selected.
-    //console.log(day)
+    ////console.log(day)
     return this.filterDays.includes(day);
   };
 
@@ -128,14 +129,14 @@ export class CreateConsultaComponent implements OnInit {
 
       let pet: IPet = { id: pet2.id }
 
-      console.log(pet);
+      //console.log(pet);
 
 
       let tipoProcedimento = 1;
       let procedimentoId = 0;
       let data: Date = this.form.controls['data'].value.toDate();
       let hora: string[] = this.form.controls['hora'].value.split(":");
-      console.log(data);
+      //console.log(data);
 
 
 
@@ -180,7 +181,7 @@ export class CreateConsultaComponent implements OnInit {
         }
       );
     }else{
-      //console.log( environment.whatsapp+`Ol%C3%A1%2C%20${this.user.name}%20aqui%2C%20gostaria%20de%20marcar%20uma%20consulta%20com%20a%20especialidade%20${this.form.controls['especialidade'].value}`);
+      ////console.log( environment.whatsapp+`Ol%C3%A1%2C%20${this.user.name}%20aqui%2C%20gostaria%20de%20marcar%20uma%20consulta%20com%20a%20especialidade%20${this.form.controls['especialidade'].value}`);
       
       window.location.href = environment.whatsapp+`Ol%C3%A1%2C%20${this.user.name}%20aqui%2C%20gostaria%20de%20marcar%20uma%20consulta%20com%20a%20especialidade%20${this.form.controls['especialidade'].value}%20para%20o%20meu%20pet%20${this.form.controls['pet'].value.name}%2C%20${'da%20especie%20'+((this.form.controls['pet'].value.tipo=='Canino')?'canina':'felina')}.`;
     }

@@ -54,12 +54,12 @@ export class CreatorOfAppointmentsComponent implements OnInit {
     })
 
     this.exameService.get().subscribe((data)=>{
-      console.log(data);
+      //console.log(data);
       this.exames = data
       this.loaded2 = true
     })
     this.vacinaService.get().subscribe((data)=>{
-      console.log(data);
+      //console.log(data);
       this.vacinas = data
       this.loaded = true
     })

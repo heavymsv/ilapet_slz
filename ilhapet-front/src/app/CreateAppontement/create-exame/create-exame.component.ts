@@ -84,7 +84,7 @@ export class CreateExameComponent implements OnInit {
       this.exames = data
     })
 
-    this.configureForm();console.log("inicio")
+    this.configureForm();//console.log("inicio")
   }
 
   configureForm() {
@@ -102,7 +102,7 @@ export class CreateExameComponent implements OnInit {
     if(d===undefined) return false
     const day = d.weekday();
     // Prevent Saturday and Sunday from being selected.
-    //console.log(day)
+    ////console.log(day)
     return this.filterDays.includes(day);
   };
 
@@ -127,16 +127,16 @@ export class CreateExameComponent implements OnInit {
     let procedimentoId = 1;
     let data:Date = this.form.controls['data'].value.toDate();
     let hora:string[] = this.form.controls['hora'].value.split(":");
-    console.log(data);
+    //console.log(data);
 
-    console.log('hours: ', hora);
+    //console.log('hours: ', hora);
 
     data.setHours(Number.parseInt(hora[0]));
     data.setMinutes(Number.parseInt(hora[1]));
 
-    console.log('vet: ',vet);
-    console.log('pet: ',pet);
-    console.log('timestamp: ', data);
+    //console.log('vet: ',vet);
+    //console.log('pet: ',pet);
+    //console.log('timestamp: ', data);
 
     let proced:IProced = {date: data,
                           pet: pet,
@@ -144,7 +144,7 @@ export class CreateExameComponent implements OnInit {
                           procedimentoId: procedimentoId,
                           tipoProcedimento: tipoProcedimento};
     
-    console.log("proced: ",proced)
+    //console.log("proced: ",proced)
   
   
     this.procedService.create(proced).subscribe(
@@ -161,7 +161,9 @@ export class CreateExameComponent implements OnInit {
       },
       (error) => {
         this.isLoading = false
-        this.notificationService.error('Não foi possivel registrar!!', 'Erro!', {
+        console.log(error);
+        
+        this.notificationService.error('Não é possível marcar neste horário, favor escolher outro!!', 'Erro!', {
           progressBar: true,
         });
       }

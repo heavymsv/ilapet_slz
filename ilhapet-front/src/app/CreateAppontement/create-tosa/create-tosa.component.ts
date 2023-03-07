@@ -6,8 +6,8 @@ import { MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dial
 import { MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 
-import * as _moment from 'moment';
-// tslint:disable-next-line:no-duplicate-imports
+import * as _moment from'moment';
+//tslint:disable-next-line:no-duplicate-imports
 import { default as _rollupMoment } from 'moment';
 import { VeterinarioService } from 'src/app/services/veterinario.service';
 import IVets from 'src/app/interfaces/IVets';
@@ -24,17 +24,17 @@ import { environment } from 'src/enviroment';
 
 const moment = _rollupMoment || _moment;
 
-// See the Moment.js docs for the meaning of these formats:
-// https://momentjs.com/docs/#/displaying/format/
+//SeetheMoment.jsdocsforthemeaningoftheseformats:
+//https://momentjs.com/docs/#/displaying/format/
 export const MY_FORMATS = {
   parse: {
     dateInput: 'LL',
   },
   display: {
     dateInput: 'DD/MM/YYYY',
-    monthYearLabel: 'MMMM YYYY',
+    monthYearLabel: 'MMMMYYYY',
     dateA11yLabel: 'LL',
-    monthYearA11yLabel: 'MMMMM YYYY',
+    monthYearA11yLabel: 'MMMMMYYYY',
   },
 };
 
@@ -52,16 +52,16 @@ export const MY_FORMATS = {
     { provide: MAT_DATE_FORMATS, useValue: MY_FORMATS },
   ],
 })
-export class CreateTosaComponent implements OnInit {
+export class CreateTosaComponent implements OnInit{
 
   @Input() veterinarios: IVets[]
   @Input() pets: IPet[]
   @Input() user: IUser
 
-  veterinariosCorreto:IVets[]=[]
+  veterinariosCorreto: IVets[] = []
 
   filterDays: number[] = []
-  hours:string[] = []
+  hours: string[] = []
 
   form: FormGroup;
   isLoading: boolean = false;
@@ -73,21 +73,21 @@ export class CreateTosaComponent implements OnInit {
     private notificationService: ToastrService,
     private procedService: ProcedimentoService,
     public authService: AuthService
-  ) { }
+  ){ }
 
   ngOnInit(): void {
 
-    this.veterinarios.map((vet)=>{
-      if(vet.especs.includes(3)){
+    this.veterinarios.map((vet) => {
+      if (vet.especs.includes(3)) {
         this.veterinariosCorreto.push(vet)
       }
     })
 
-    this.configureForm();
+this.configureForm();
 
   }
 
-  configureForm() {
+  configureForm(){
     this.form = this.formBuilder.group({
       especialidade: ['', [Validators.required]],
       vet: ['', [Validators.required]],
@@ -102,81 +102,81 @@ export class CreateTosaComponent implements OnInit {
   myFilter = (d: any): boolean => {
     if (d === undefined) return false
     const day = d.weekday();
-    // Prevent Saturday and Sunday from being selected.
-    //console.log(day)
+    //PreventSaturdayandSundayfrombeingselected.
+    ////console.log(day)
     return this.filterDays.includes(day);
   };
 
-  selectVet = () =>{
+  selectVet = () => {
     this.filterDays = this.form.controls["vet"].value.days
   }
 
-  diaSelec = ($event:any) => {
-    
+  diaSelec = ($event: any) => {
+
     this.hours = this.form.controls["vet"].value.hours[this.filterDays.indexOf((new Date(this.form.controls["data"].value._d)).getDay())]
-    //this.hours = this.form.controls["data"].value
+    //this.hours=this.form.controls["data"].value
   }
 
-  submit() {
-    
-      this.isLoading = true
-      this.isError = false
-      let vet = this.form.controls['vet'].value;
-      let pet2: IPet = this.form.controls['pet'].value;
+  submit(){
 
-      let pet: IPet = { id: pet2.id }
+    this.isLoading = true
+    this.isError = false
+    let vet = this.form.controls['vet'].value;
+    let pet2: IPet = this.form.controls['pet'].value;
 
-      console.log(pet);
+    let pet: IPet = { id: pet2.id }
 
-
-      let tipoProcedimento = 0;
-      let procedimentoId = 4;
-      let data: Date = this.form.controls['data'].value.toDate();
-      let hora: string[] = this.form.controls['hora'].value.split(":");
-      console.log(data);
+    //console.log(pet);
 
 
-
-      data.setHours(Number.parseInt(hora[0]));
-      data.setMinutes(Number.parseInt(hora[1]));
-
-
-      let proced: IProced = {
-        date: data,
-        pet: pet,
-        veterinario: vet,
-        procedimentoId: procedimentoId,
-        tipoProcedimento: tipoProcedimento,
-      };
+    let tipoProcedimento = 0;
+    let procedimentoId = 4;
+    let data: Date = this.form.controls['data'].value.toDate();
+    let hora: string[] = this.form.controls['hora'].value.split(":");
+    //console.log(data);
 
 
 
+    data.setHours(Number.parseInt(hora[0]));
+    data.setMinutes(Number.parseInt(hora[1]));
 
-      this.procedService.create(proced).subscribe(
-        (response) => {
 
-          this.isLoading = false
-          this.notificationService.success('Consulta marcada com sucesso!!', 'Sucesso!', {
-            progressBar: true,
-          });
-          this.form.reset()
-          this.router.navigate(['']).then(() => {
+    let proced: IProced = {
+      date: data,
+      pet: pet,
+      veterinario: vet,
+      procedimentoId: procedimentoId,
+      tipoProcedimento: tipoProcedimento,
+    };
 
-            this.navigateByAuth()
-          })
-        },
-        (error) => {
-          this.isLoading = false
-          this.notificationService.error('Não foi possivel registrar!!', 'Erro!', {
-            progressBar: true,
-          });
-        }
-      );
-   
+
+
+
+    this.procedService.create(proced).subscribe(
+      (response) => {
+
+        this.isLoading = false
+        this.notificationService.success('Consultamarcadacomsucesso!!', 'Sucesso!', {
+          progressBar: true,
+        });
+        this.form.reset()
+        this.router.navigate(['']).then(() => {
+
+          this.navigateByAuth()
+        })
+      },
+      (error) => {
+        this.isLoading = false
+        this.notificationService.error('Nãofoipossivelregistrar!!', 'Erro!', {
+          progressBar: true,
+        });
+      }
+    );
+
 
   }
 
-  navigateByAuth() {
+  navigateByAuth(){
     if (localStorage.getItem('T-WMS_token')) {
       if (this.authService.validateRole(['ROLE_ADMIN'])) {
         this.router.navigate(['adm']);
