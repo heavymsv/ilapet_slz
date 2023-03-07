@@ -79,12 +79,15 @@ export class CreateConsultaComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    if(!(this.veterinarios === undefined)){
 
-    this.veterinarios.map((vet)=>{
-      if(vet.especs.includes(0)){
-        this.veterinariosCorreto.push(vet)
-      }
-    })
+      this.veterinarios.map((vet)=>{
+        if(vet.especs.includes(0)){
+          this.veterinariosCorreto.push(vet)
+        }
+      })
+
+    }
 
     this.configureForm();
 

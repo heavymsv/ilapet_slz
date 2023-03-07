@@ -6,7 +6,7 @@ import { MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dial
 import { MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 
-import * as _moment from'moment';
+import * as _moment from 'moment';
 //tslint:disable-next-line:no-duplicate-imports
 import { default as _rollupMoment } from 'moment';
 import { VeterinarioService } from 'src/app/services/veterinario.service';
@@ -52,7 +52,7 @@ export const MY_FORMATS = {
     { provide: MAT_DATE_FORMATS, useValue: MY_FORMATS },
   ],
 })
-export class CreateTosaComponent implements OnInit{
+export class CreateTosaComponent implements OnInit {
 
   @Input() veterinarios: IVets[]
   @Input() pets: IPet[]
@@ -73,21 +73,25 @@ export class CreateTosaComponent implements OnInit{
     private notificationService: ToastrService,
     private procedService: ProcedimentoService,
     public authService: AuthService
-  ){ }
+  ) { }
 
   ngOnInit(): void {
 
-    this.veterinarios.map((vet) => {
-      if (vet.especs.includes(3)) {
-        this.veterinariosCorreto.push(vet)
-      }
-    })
+    if (!(this.veterinarios === undefined)) {
 
-this.configureForm();
+      this.veterinarios.map((vet) => {
+        if (vet.especs.includes(3)) {
+          this.veterinariosCorreto.push(vet)
+        }
+      })
+
+    }
+
+    this.configureForm();
 
   }
 
-  configureForm(){
+  configureForm() {
     this.form = this.formBuilder.group({
       especialidade: ['', [Validators.required]],
       vet: ['', [Validators.required]],
@@ -117,7 +121,7 @@ this.configureForm();
     //this.hours=this.form.controls["data"].value
   }
 
-  submit(){
+  submit() {
 
     this.isLoading = true
     this.isError = false
@@ -176,7 +180,7 @@ this.configureForm();
 
   }
 
-  navigateByAuth(){
+  navigateByAuth() {
     if (localStorage.getItem('T-WMS_token')) {
       if (this.authService.validateRole(['ROLE_ADMIN'])) {
         this.router.navigate(['adm']);
