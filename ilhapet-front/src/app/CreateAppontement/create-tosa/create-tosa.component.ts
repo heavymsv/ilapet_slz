@@ -95,6 +95,7 @@ export class CreateTosaComponent implements OnInit {
     this.form = this.formBuilder.group({
       especialidade: ['', [Validators.required]],
       vet: ['', [Validators.required]],
+      opt: ['', [Validators.required]],
       pet: ['', [Validators.required]],
       sintomas: ['', []],
       data: ['', [Validators.required]],
@@ -133,7 +134,7 @@ export class CreateTosaComponent implements OnInit {
     //console.log(pet);
 
 
-    let tipoProcedimento = 0;
+    let tipoProcedimento = Number.parseInt(this.form.controls['opt'].value);
     let procedimentoId = 4;
     let data: Date = this.form.controls['data'].value.toDate();
     let hora: string[] = this.form.controls['hora'].value.split(":");

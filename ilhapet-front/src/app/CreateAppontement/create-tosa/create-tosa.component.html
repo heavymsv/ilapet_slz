@@ -11,13 +11,31 @@
                         <mat-icon>medical_services</mat-icon>
                     </div>
                     <mat-form-field appearance="fill" class="select-pet-form">
-                        <mat-label>Especialista</mat-label>
+                        <mat-label>Serviço</mat-label>
                         <mat-select name="vet" formControlName="vet" (selectionChange)="selectVet()" class="select-pet-form">
                             <mat-option *ngFor="let vet of veterinariosCorreto" [value]="vet">{{
                                 vet.name
                             }}</mat-option>
                             <mat-error *ngIf="form.controls['vet'].errors?.['required']">Você deve selecionar algo.</mat-error>
                         </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div class="select-form-format">
+                <div class="select-outline">
+                    <div class="icon-spacing">
+                        <mat-icon>medical_services</mat-icon>
+                    </div>
+                    <mat-form-field appearance="fill" class="select-pet-form">
+                        <mat-label>Selecione uma opção</mat-label>                    
+                        <mat-radio-group name="opt" formControlName="opt" class="select-pet-form">
+                            <mat-radio-button value="1">Banho</mat-radio-button>
+                            <mat-radio-button value="2">Banho e Tosa</mat-radio-button>
+                            <mat-radio-button value="3">Banho e tosa higiênica</mat-radio-button>
+                            <mat-radio-button value="4">Corte de unha </mat-radio-button>
+                            <mat-error *ngIf="form.controls['opt'].errors?.['required']">Você deve selecionar algum procedimento.</mat-error>
+                        </mat-radio-group>
                     </mat-form-field>
                 </div>
             </div>

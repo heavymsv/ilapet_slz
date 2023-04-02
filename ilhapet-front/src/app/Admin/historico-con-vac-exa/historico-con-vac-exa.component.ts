@@ -142,6 +142,8 @@ export class HistoricoConVacExaComponent implements OnInit {
         volta.push("Vacina: " + vacina )
         volta.push("Dose: " + compromisso.sintomas )
       
+    }else{
+        volta.push("Procedimento: " + (compromisso.tipoProcedimento==1)?"Banho":((compromisso.tipoProcedimento==2)?"Banho e Tosa":((compromisso.tipoProcedimento==3)?"Banho e tosa higiênica":"Corte de unha")))
     }
     return volta;
   }

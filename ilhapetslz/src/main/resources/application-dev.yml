@@ -5,10 +5,10 @@ spring:
       ddl-auto: create
   datasource:
     driverClassName: com.mysql.cj.jdbc.Driver
-    host: jdbc:mysql://localhost:3306
-    username: root
-    password: admin
-    url: jdbc:mysql://localhost/ilhapet?useSSL=false&allowMultiQueries=true&serverTimezone=UTC
+    host: mysql27-farm10.kinghost.net
+    username: ilhapetoficial01
+    password: 1Lhapet
+    url: jdbc:mysql://mysql27-farm10.kinghost.net:3306/ilhapetoficial01?useSSL=false&serverTimezone=UTC
     driver-class-name: com.mysql.cj.jdbc.Driver
 server:
   port: 8080
